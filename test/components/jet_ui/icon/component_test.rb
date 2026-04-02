@@ -15,16 +15,22 @@ class JetUi::Icon::ComponentTest < ViewComponent::TestCase
     assert_selector 'svg path'
   end
 
-  def test_default_classes
+  def test_default_class
     render_inline(JetUi::Icon::Component.new('heart'))
 
-    assert_selector 'svg.inline-block.shrink-0.align-middle'
+    assert_selector 'svg.icon'
   end
 
-  def test_size_class
+  def test_size_applied_as_inline_style
     render_inline(JetUi::Icon::Component.new('heart', size: 6))
 
-    assert_selector 'svg.size-6'
+    assert_selector 'svg[style*="calc(var(--spacing) * 6)"]'
+  end
+
+  def test_no_size_no_inline_style
+    render_inline(JetUi::Icon::Component.new('heart'))
+
+    assert_no_selector 'svg[style]'
   end
 
   def test_custom_class

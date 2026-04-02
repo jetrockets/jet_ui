@@ -25,16 +25,21 @@ module JetUi
 
       def html_attributes(icon_name)
         attrs = {
-          class: class_names('inline-block shrink-0 align-middle', size_class, @options.delete(:class)),
+          class: class_names('icon', @options.delete(:class)),
+          style: size_style,
           'aria-hidden': 'true',
           'aria-label': icon_name.to_s.humanize
         }.merge(@options)
+        attrs.compact!
 
         attrs.map { |k, v| "#{k}=\"#{CGI.escapeHTML(v.to_s)}\"" }.join(' ')
       end
 
-      def size_class
-        "size-#{@size}" if @size
+      def size_style
+        return unless @size
+
+        size = "calc(var(--spacing) * #{@size})"
+        "width: #{size}; height: #{size};"
       end
     end
   end

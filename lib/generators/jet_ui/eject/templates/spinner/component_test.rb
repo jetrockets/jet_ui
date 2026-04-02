@@ -12,13 +12,13 @@ class JetUi::Spinner::ComponentTest < ViewComponent::TestCase
   def test_default_size
     render_inline(JetUi::Spinner::Component.new)
 
-    assert_selector 'svg.size-6'
+    assert_selector 'svg[style*="calc(var(--spacing) * 6)"]'
   end
 
   def test_custom_size
     render_inline(JetUi::Spinner::Component.new(size: 10))
 
-    assert_selector 'svg.size-10'
+    assert_selector 'svg[style*="calc(var(--spacing) * 10)"]'
   end
 
   def test_custom_class
