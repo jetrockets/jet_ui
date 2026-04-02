@@ -1,0 +1,23 @@
+<div class="p-4">
+  <p class="text-sm text-muted-foreground mb-4">326 icons available. Color inherits from <code>text-*</code> classes.</p>
+  <div class="grid grid-cols-8 gap-4">
+    <% %w[
+      academic-cap archive-box arrow-down arrow-left arrow-right arrow-up
+      arrow-path bars-3 bell bolt bookmark calendar camera chart-bar
+      check check-circle chevron-down chevron-left chevron-right chevron-up
+      clipboard clock cloud cog-6-tooth credit-card document ellipsis-horizontal
+      envelope exclamation-circle exclamation-triangle eye fire flag
+      funnel gift globe-alt hand-thumb-up heart home identification
+      inbox information-circle key link list-bullet lock-closed lock-open
+      magnifying-glass map-pin minus moon no-symbol paper-airplane
+      pencil phone photo plus power printer question-mark-circle
+      scissors share shield-check shopping-bag slash speaker-wave
+      squares-2x2 star sun tag trash truck user users wrench x-circle x-mark
+    ].each do |name| %>
+      <div class="flex flex-col items-center gap-1">
+        <%= render JetUi::Icon::Component.new(name, size: 6) %>
+        <span class="text-[10px] text-muted-foreground text-center leading-tight"><%= name %></span>
+      </div>
+    <% end %>
+  </div>
+</div>

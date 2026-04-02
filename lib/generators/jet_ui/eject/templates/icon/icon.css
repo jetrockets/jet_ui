@@ -1,0 +1,5 @@
+@layer components {
+  svg.inline-block {
+    display: inline-block;
+  }
+}

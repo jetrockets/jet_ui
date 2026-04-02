@@ -12,11 +12,12 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card].join(', ')}
+        Available components: #{%w[btn card icon].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
           rails generate jet_ui:eject card
+          rails generate jet_ui:eject icon
           rails generate jet_ui:eject btn card
           rails generate jet_ui:eject btn --skip-test
           rails generate jet_ui:eject btn --skip-preview
@@ -52,6 +53,14 @@ module JetUi
             { src: 'card/card.css',              dest: 'app/assets/stylesheets/jet_ui/card.css' },
             { src: 'card/component_test.rb',     dest: 'test/components/jet_ui/card/component_test.rb',                 type: :test },
             { src: 'card/component_preview.rb',  dest: 'test/components/previews/jet_ui/card/component_preview.rb',     type: :preview }
+          ]
+        },
+        'icon' => {
+          files: [
+            { src: 'icon/component.rb',         dest: 'app/components/jet_ui/icon/component.rb' },
+            { src: 'icon/icon.css',             dest: 'app/assets/stylesheets/jet_ui/icon.css' },
+            { src: 'icon/component_test.rb',    dest: 'test/components/jet_ui/icon/component_test.rb',                   type: :test },
+            { src: 'icon/component_preview.rb', dest: 'test/components/previews/jet_ui/icon/component_preview.rb',       type: :preview }
           ]
         }
       }.freeze
