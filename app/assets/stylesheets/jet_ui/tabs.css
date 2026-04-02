@@ -11,7 +11,7 @@
   }
 
   .tabs__link--active {
-    @apply shadow-sm text-foreground bg-card;
+    @apply shadow-sm text-foreground bg-(--color-surface);
   }
 
   /* Underline variant */
@@ -25,6 +25,6 @@
   }
 
   .tabs--underline .tabs__link--active {
-    @apply bg-transparent shadow-none text-(--color-primary) border-(--color-primary);
+    @apply bg-transparent shadow-none text-(--color-accent) border-(--color-accent);
   }
 }
