@@ -1,9 +1,0 @@
-@layer components {
-  .icon {
-    display: inline-block;
-    flex-shrink: 0;
-    vertical-align: middle;
-    width: calc(var(--spacing) * 5);
-    height: calc(var(--spacing) * 5);
-  }
-}

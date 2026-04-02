@@ -59,6 +59,7 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Breadcrumbs | [docs/components/breadcrumbs.md](docs/components/breadcrumbs.md) |
 | Tabs | [docs/components/tabs.md](docs/components/tabs.md) |
 | Empty | [docs/components/empty.md](docs/components/empty.md) |
+| List | [docs/components/list.md](docs/components/list.md) |
 
 ## Generators
 

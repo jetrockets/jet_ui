@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module JetUi
-  module Tabs
+  module List
     class Component < BaseComponent
-      VARIANTS = %i[pill underline].freeze
-      DEFAULT_VARIANT = :pill
+      VARIANTS = %i[default divided].freeze
+      DEFAULT_VARIANT = :default
 
       def initialize(variant: DEFAULT_VARIANT, **options)
         @variant = VARIANTS.include?(variant) ? variant : DEFAULT_VARIANT
@@ -12,17 +12,16 @@ module JetUi
       end
 
       def call
-        content_tag :div, class: wrapper_classes do
-          content_tag :ul, content, class: class_names('tabs__list', @options.delete(:class))
-        end
+        content_tag :ul, content, class: classes, **@options
       end
 
       private
 
-      def wrapper_classes
+      def classes
         class_names(
-          'tabs',
-          { 'tabs--underline': @variant == :underline }
+          'list',
+          { 'list--divided': @variant == :divided },
+          @options.delete(:class)
         )
       end
     end
