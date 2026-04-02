@@ -31,27 +31,27 @@ class JetUi::Avatar::ComponentTest < ViewComponent::TestCase
   def test_default_variant_circle
     render_inline(JetUi::Avatar::Component.new)
 
-    assert_selector 'div.rounded-full'
+    assert_selector 'div.avatar--circle'
   end
 
   def test_rounded_variant
     render_inline(JetUi::Avatar::Component.new(variant: :rounded))
 
-    assert_selector 'div.rounded-lg'
-    assert_no_selector 'div.rounded-full'
+    assert_selector 'div.avatar--rounded'
+    assert_no_selector 'div.avatar--circle'
   end
 
   def test_square_variant
     render_inline(JetUi::Avatar::Component.new(variant: :square))
 
-    assert_no_selector 'div.rounded-full'
-    assert_no_selector 'div.rounded-lg'
+    assert_no_selector 'div.avatar--circle'
+    assert_no_selector 'div.avatar--rounded'
   end
 
   def test_invalid_variant_falls_back_to_circle
     render_inline(JetUi::Avatar::Component.new(variant: :unknown))
 
-    assert_selector 'div.rounded-full'
+    assert_selector 'div.avatar--circle'
   end
 
   def test_custom_class

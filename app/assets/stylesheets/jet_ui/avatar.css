@@ -1,0 +1,13 @@
+@layer components {
+  .avatar {
+    @apply relative flex items-center justify-center overflow-hidden font-medium text-muted-foreground bg-muted;
+  }
+
+  .avatar--circle {
+    @apply rounded-full;
+  }
+
+  .avatar--rounded {
+    @apply rounded-lg;
+  }
+}

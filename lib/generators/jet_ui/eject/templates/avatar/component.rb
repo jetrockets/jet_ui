@@ -37,9 +37,9 @@ module JetUi
 
       def avatar_classes
         class_names(
-          'relative flex items-center justify-center overflow-hidden font-medium text-muted-foreground bg-muted',
-          { 'rounded-lg': @variant == :rounded },
-          { 'rounded-full': @variant == :circle },
+          'avatar',
+          { 'avatar--circle': @variant == :circle },
+          { 'avatar--rounded': @variant == :rounded },
           @options.delete(:class)
         )
       end
