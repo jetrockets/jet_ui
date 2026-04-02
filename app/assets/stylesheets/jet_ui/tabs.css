@@ -1,3 +1,5 @@
+@layer theme, base, components, utilities;
+
 @layer components {
   .tabs__list {
     @apply inline-flex gap-1 p-1 text-sm list-none bg-muted rounded-(--radius-btn-md);

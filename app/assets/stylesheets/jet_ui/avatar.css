@@ -1,3 +1,5 @@
+@layer theme, base, components, utilities;
+
 @layer components {
   .avatar {
     @apply relative flex items-center justify-center overflow-hidden font-medium text-muted-foreground bg-muted;

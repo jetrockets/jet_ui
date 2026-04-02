@@ -1,3 +1,5 @@
+@layer theme, base, components, utilities;
+
 @layer components {
   .stat {
     @apply border border-border rounded-card p-6;

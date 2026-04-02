@@ -1,3 +1,5 @@
+@layer theme, base, components, utilities;
+
 @layer components {
   .btn {
     @apply inline-flex items-center justify-center gap-2 w-fit;

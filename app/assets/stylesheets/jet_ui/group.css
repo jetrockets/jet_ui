@@ -1,3 +1,5 @@
+@layer theme, base, components, utilities;
+
 @layer components {
   .ui_group {
     @apply inline-flex items-center gap-2;

@@ -1,3 +1,5 @@
+@layer theme, base, components, utilities;
+
 @layer components {
   .badge {
     @apply inline-flex items-center font-semibold w-fit whitespace-nowrap border;
