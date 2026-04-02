@@ -1,0 +1,10 @@
+<div class="flex items-center gap-4 p-4">
+  <%= render JetUi::Avatar::Component.new(name: 'John Doe', variant: :circle) %>
+  <span class="text-sm text-muted-foreground">circle (default)</span>
+
+  <%= render JetUi::Avatar::Component.new(name: 'John Doe', variant: :rounded) %>
+  <span class="text-sm text-muted-foreground">rounded</span>
+
+  <%= render JetUi::Avatar::Component.new(name: 'John Doe', variant: :square) %>
+  <span class="text-sm text-muted-foreground">square</span>
+</div>

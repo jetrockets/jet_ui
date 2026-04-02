@@ -1,0 +1,21 @@
+<div class="flex items-center gap-6 p-4">
+  <div class="flex flex-col items-center gap-1">
+    <%= render JetUi::Avatar::Component.new %>
+    <span class="text-xs text-muted-foreground">icon fallback</span>
+  </div>
+
+  <div class="flex flex-col items-center gap-1">
+    <%= render JetUi::Avatar::Component.new(name: 'Alice Smith') %>
+    <span class="text-xs text-muted-foreground">initials</span>
+  </div>
+
+  <div class="flex flex-col items-center gap-1">
+    <%= render JetUi::Avatar::Component.new(name: 'Single') %>
+    <span class="text-xs text-muted-foreground">single name</span>
+  </div>
+
+  <div class="flex flex-col items-center gap-1">
+    <%= render JetUi::Avatar::Component.new(src: 'https://i.pravatar.cc/150?img=3', name: 'Jane Doe') %>
+    <span class="text-xs text-muted-foreground">with image</span>
+  </div>
+</div>

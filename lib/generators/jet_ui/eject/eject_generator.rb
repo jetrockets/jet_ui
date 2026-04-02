@@ -12,7 +12,7 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon].join(', ')}
+        Available components: #{%w[btn card icon spinner avatar].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
@@ -61,6 +61,20 @@ module JetUi
             { src: 'icon/icon.css',             dest: 'app/assets/stylesheets/jet_ui/icon.css' },
             { src: 'icon/component_test.rb',    dest: 'test/components/jet_ui/icon/component_test.rb',                   type: :test },
             { src: 'icon/component_preview.rb', dest: 'test/components/previews/jet_ui/icon/component_preview.rb',       type: :preview }
+          ]
+        },
+        'spinner' => {
+          files: [
+            { src: 'spinner/component.rb',         dest: 'app/components/jet_ui/spinner/component.rb' },
+            { src: 'spinner/component_test.rb',    dest: 'test/components/jet_ui/spinner/component_test.rb',               type: :test },
+            { src: 'spinner/component_preview.rb', dest: 'test/components/previews/jet_ui/spinner/component_preview.rb',   type: :preview }
+          ]
+        },
+        'avatar' => {
+          files: [
+            { src: 'avatar/component.rb',         dest: 'app/components/jet_ui/avatar/component.rb' },
+            { src: 'avatar/component_test.rb',    dest: 'test/components/jet_ui/avatar/component_test.rb',                 type: :test },
+            { src: 'avatar/component_preview.rb', dest: 'test/components/previews/jet_ui/avatar/component_preview.rb',     type: :preview }
           ]
         }
       }.freeze
