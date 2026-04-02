@@ -1,0 +1,23 @@
+<%= render JetUi::List::Component.new(variant: :divided) do %>
+  <%= render JetUi::List::ItemComponent.new do %>
+    <%= render JetUi::List::IconComponent.new('inbox') %>
+    <%= render JetUi::List::ContentComponent.new do %>
+      <strong>Inbox</strong>
+      <span class="text-muted-foreground text-sm block">View your messages</span>
+    <% end %>
+  <% end %>
+  <%= render JetUi::List::ItemComponent.new do %>
+    <%= render JetUi::List::IconComponent.new('cog-6-tooth') %>
+    <%= render JetUi::List::ContentComponent.new do %>
+      <strong>Settings</strong>
+      <span class="text-muted-foreground text-sm block">Manage your preferences</span>
+    <% end %>
+  <% end %>
+  <%= render JetUi::List::ItemComponent.new do %>
+    <%= render JetUi::List::IconComponent.new('arrow-right-on-rectangle') %>
+    <%= render JetUi::List::ContentComponent.new do %>
+      <strong>Sign out</strong>
+      <span class="text-muted-foreground text-sm block">Log out of your account</span>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,22 @@
+<%= render JetUi::List::Component.new do %>
+  <%= render JetUi::List::ItemComponent.new do %>
+    <%= render JetUi::List::IconComponent.new('user') %>
+    <%= render JetUi::List::ContentComponent.new do %>
+      <strong>John Doe</strong>
+      <span class="text-muted-foreground text-sm block">john@example.com</span>
+    <% end %>
+    <%= render JetUi::List::ActionComponent.new do %>
+      <%= render JetUi::Btn::Component.new(size: :sm, variant: :ghost) do %>Edit<% end %>
+    <% end %>
+  <% end %>
+  <%= render JetUi::List::ItemComponent.new do %>
+    <%= render JetUi::List::IconComponent.new('user') %>
+    <%= render JetUi::List::ContentComponent.new do %>
+      <strong>Jane Smith</strong>
+      <span class="text-muted-foreground text-sm block">jane@example.com</span>
+    <% end %>
+    <%= render JetUi::List::ActionComponent.new do %>
+      <%= render JetUi::Btn::Component.new(size: :sm, variant: :ghost) do %>Edit<% end %>
+    <% end %>
+  <% end %>
+<% end %>

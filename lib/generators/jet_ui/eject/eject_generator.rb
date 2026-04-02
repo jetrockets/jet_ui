@@ -133,7 +133,9 @@ module JetUi
             { src: 'app/components/jet_ui/list/action_component.rb',                                            dest: 'app/components/jet_ui/list/action_component.rb' },
             { src: 'app/assets/stylesheets/jet_ui/list.css',                                                    dest: 'app/assets/stylesheets/jet_ui/list.css' },
             { src: 'test/components/jet_ui/list/component_test.rb',                                             dest: 'test/components/jet_ui/list/component_test.rb',                          type: :test },
-            { src: 'test/components/previews/jet_ui/list/component_preview.rb',                                 dest: 'test/components/previews/jet_ui/list/component_preview.rb',              type: :preview }
+            { src: 'test/components/previews/jet_ui/list/component_preview.rb',                                 dest: 'test/components/previews/jet_ui/list/component_preview.rb',              type: :preview },
+            { src: 'test/components/previews/jet_ui/list/component_preview/default.html.erb',                   dest: 'test/components/previews/jet_ui/list/component_preview/default.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/list/component_preview/divided.html.erb',                   dest: 'test/components/previews/jet_ui/list/component_preview/divided.html.erb', type: :preview }
           ]
         }
       }.freeze
