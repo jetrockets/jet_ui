@@ -1,0 +1,8 @@
+<div class="p-4">
+  <%= render JetUi::Tabs::Component.new(variant: :underline) do %>
+    <%= render JetUi::Tabs::ItemComponent.new('General', href: '#', icon: 'user', active: true) %>
+    <%= render JetUi::Tabs::ItemComponent.new('Security', href: '#', icon: 'shield-check') %>
+    <%= render JetUi::Tabs::ItemComponent.new('Billing', href: '#', icon: 'credit-card') %>
+    <%= render JetUi::Tabs::ItemComponent.new('Notifications', href: '#', icon: 'bell') %>
+  <% end %>
+</div>

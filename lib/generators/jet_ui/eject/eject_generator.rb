@@ -12,7 +12,7 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon spinner avatar].join(', ')}
+        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
@@ -75,6 +75,36 @@ module JetUi
             { src: 'avatar/component.rb',         dest: 'app/components/jet_ui/avatar/component.rb' },
             { src: 'avatar/component_test.rb',    dest: 'test/components/jet_ui/avatar/component_test.rb',                 type: :test },
             { src: 'avatar/component_preview.rb', dest: 'test/components/previews/jet_ui/avatar/component_preview.rb',     type: :preview }
+          ]
+        },
+        'breadcrumbs' => {
+          files: [
+            { src: 'breadcrumbs/component.rb',         dest: 'app/components/jet_ui/breadcrumbs/component.rb' },
+            { src: 'breadcrumbs/item_component.rb',    dest: 'app/components/jet_ui/breadcrumbs/item_component.rb' },
+            { src: 'breadcrumbs/breadcrumbs.css',      dest: 'app/assets/stylesheets/jet_ui/breadcrumbs.css' },
+            { src: 'breadcrumbs/component_test.rb',    dest: 'test/components/jet_ui/breadcrumbs/component_test.rb',               type: :test },
+            { src: 'breadcrumbs/component_preview.rb', dest: 'test/components/previews/jet_ui/breadcrumbs/component_preview.rb',   type: :preview }
+          ]
+        },
+        'tabs' => {
+          files: [
+            { src: 'tabs/component.rb',         dest: 'app/components/jet_ui/tabs/component.rb' },
+            { src: 'tabs/item_component.rb',    dest: 'app/components/jet_ui/tabs/item_component.rb' },
+            { src: 'tabs/tabs.css',             dest: 'app/assets/stylesheets/jet_ui/tabs.css' },
+            { src: 'tabs/component_test.rb',    dest: 'test/components/jet_ui/tabs/component_test.rb',               type: :test },
+            { src: 'tabs/component_preview.rb', dest: 'test/components/previews/jet_ui/tabs/component_preview.rb',   type: :preview }
+          ]
+        },
+        'empty' => {
+          files: [
+            { src: 'empty/component.rb',             dest: 'app/components/jet_ui/empty/component.rb' },
+            { src: 'empty/title_component.rb',       dest: 'app/components/jet_ui/empty/title_component.rb' },
+            { src: 'empty/description_component.rb', dest: 'app/components/jet_ui/empty/description_component.rb' },
+            { src: 'empty/icon_component.rb',        dest: 'app/components/jet_ui/empty/icon_component.rb' },
+            { src: 'empty/actions_component.rb',     dest: 'app/components/jet_ui/empty/actions_component.rb' },
+            { src: 'empty/empty.css',                dest: 'app/assets/stylesheets/jet_ui/empty.css' },
+            { src: 'empty/component_test.rb',        dest: 'test/components/jet_ui/empty/component_test.rb',               type: :test },
+            { src: 'empty/component_preview.rb',     dest: 'test/components/previews/jet_ui/empty/component_preview.rb',   type: :preview }
           ]
         }
       }.freeze

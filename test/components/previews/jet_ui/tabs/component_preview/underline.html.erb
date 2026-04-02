@@ -1,0 +1,8 @@
+<div class="p-4">
+  <%= render JetUi::Tabs::Component.new(variant: :underline) do %>
+    <%= render JetUi::Tabs::ItemComponent.new('All', href: '#', active: true) %>
+    <%= render JetUi::Tabs::ItemComponent.new('Pending', href: '#') %>
+    <%= render JetUi::Tabs::ItemComponent.new('Completed', href: '#') %>
+    <%= render JetUi::Tabs::ItemComponent.new('Cancelled', href: '#') %>
+  <% end %>
+</div>

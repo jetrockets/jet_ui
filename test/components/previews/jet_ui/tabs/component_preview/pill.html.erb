@@ -1,0 +1,7 @@
+<div class="p-4">
+  <%= render JetUi::Tabs::Component.new do %>
+    <%= render JetUi::Tabs::ItemComponent.new('Profile', href: '#', active: true) %>
+    <%= render JetUi::Tabs::ItemComponent.new('Settings', href: '#') %>
+    <%= render JetUi::Tabs::ItemComponent.new('Notifications', href: '#') %>
+  <% end %>
+</div>

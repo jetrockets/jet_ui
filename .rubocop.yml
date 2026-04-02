@@ -85,8 +85,9 @@ Rails/Exit:
   Exclude:
     - "lib/generators/**/*"
 
-# Test files naturally grow large — each method is a distinct assertion
+# Test files and the eject generator MANIFEST naturally grow large
 Metrics/ClassLength:
   Exclude:
     - "test/**/*"
+    - "lib/generators/**/*"
 

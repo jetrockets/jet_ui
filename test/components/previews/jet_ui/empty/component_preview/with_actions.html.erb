@@ -1,0 +1,9 @@
+<%= render JetUi::Empty::Component.new do %>
+  <%= render JetUi::Empty::IconComponent.new('inbox') %>
+  <%= render JetUi::Empty::TitleComponent.new do %>No messages<% end %>
+  <%= render JetUi::Empty::DescriptionComponent.new do %>Your inbox is empty. Start a conversation.<% end %>
+  <%= render JetUi::Empty::ActionsComponent.new do %>
+    <%= render JetUi::Btn::Component.new do %>New message<% end %>
+    <%= render JetUi::Btn::Component.new(variant: :outline) do %>Learn more<% end %>
+  <% end %>
+<% end %>

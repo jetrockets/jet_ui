@@ -56,6 +56,9 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Icon | [docs/components/icon.md](docs/components/icon.md) |
 | Spinner | [docs/components/spinner.md](docs/components/spinner.md) |
 | Avatar | [docs/components/avatar.md](docs/components/avatar.md) |
+| Breadcrumbs | [docs/components/breadcrumbs.md](docs/components/breadcrumbs.md) |
+| Tabs | [docs/components/tabs.md](docs/components/tabs.md) |
+| Empty | [docs/components/empty.md](docs/components/empty.md) |
 
 ## Generators
 

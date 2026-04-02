@@ -1,0 +1,26 @@
+@layer components {
+  .breadcrumbs {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .breadcrumbs__list {
+    @apply flex items-center flex-wrap list-none;
+  }
+
+  .breadcrumbs__item {
+    @apply flex items-center;
+  }
+
+  .breadcrumbs__item:not(:last-child)::after {
+    content: "/";
+    @apply mx-2 text-muted-foreground;
+  }
+
+  .breadcrumbs__link {
+    @apply text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .breadcrumbs__current {
+    @apply text-foreground font-medium;
+  }
+}
