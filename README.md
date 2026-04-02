@@ -53,6 +53,9 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Alert | [docs/components/alert.md](docs/components/alert.md) |
 | Group | [docs/components/group.md](docs/components/group.md) |
 | Stat | [docs/components/stat.md](docs/components/stat.md) |
+| Icon | [docs/components/icon.md](docs/components/icon.md) |
+| Spinner | [docs/components/spinner.md](docs/components/spinner.md) |
+| Avatar | [docs/components/avatar.md](docs/components/avatar.md) |
 
 ## Generators
 
