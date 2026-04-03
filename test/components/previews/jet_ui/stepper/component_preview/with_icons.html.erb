@@ -1,0 +1,6 @@
+<%= render JetUi::Stepper::Component.new do %>
+  <%= render JetUi::Stepper::StepComponent.new("Cart", icon: "shopping-cart", status: :completed) %>
+  <%= render JetUi::Stepper::StepComponent.new("Shipping", icon: "truck", status: :current) %>
+  <%= render JetUi::Stepper::StepComponent.new("Payment", icon: "credit-card", status: :pending) %>
+  <%= render JetUi::Stepper::StepComponent.new("Confirmation", icon: "check-circle", status: :pending) %>
+<% end %>

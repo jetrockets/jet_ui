@@ -1,0 +1,5 @@
+<%= render JetUi::Stepper::Component.new do %>
+  <%= render JetUi::Stepper::StepComponent.new("Account", number: 1, status: :completed) %>
+  <%= render JetUi::Stepper::StepComponent.new("Profile", number: 2, status: :current) %>
+  <%= render JetUi::Stepper::StepComponent.new("Review", number: 3, status: :pending) %>
+<% end %>

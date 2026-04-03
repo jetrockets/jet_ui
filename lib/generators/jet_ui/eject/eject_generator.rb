@@ -14,7 +14,7 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline].join(', ')}
+        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline stepper].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
@@ -122,6 +122,19 @@ module JetUi
             { src: 'test/components/previews/jet_ui/empty/component_preview.rb',                                dest: 'test/components/previews/jet_ui/empty/component_preview.rb',             type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb',             dest: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb', type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb',          dest: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb', type: :preview }
+          ]
+        },
+        'stepper' => {
+          files: [
+            { src: 'app/components/jet_ui/stepper/component.rb',                                                  dest: 'app/components/jet_ui/stepper/component.rb' },
+            { src: 'app/components/jet_ui/stepper/step_component.rb',                                             dest: 'app/components/jet_ui/stepper/step_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/stepper.css',                                                   dest: 'app/assets/stylesheets/jet_ui/stepper.css' },
+            { src: 'test/components/jet_ui/stepper/component_test.rb',                                            dest: 'test/components/jet_ui/stepper/component_test.rb',                     type: :test },
+            { src: 'test/components/previews/jet_ui/stepper/component_preview.rb',                                dest: 'test/components/previews/jet_ui/stepper/component_preview.rb',         type: :preview },
+            { src: 'test/components/previews/jet_ui/stepper/component_preview/basic.html.erb',                    dest: 'test/components/previews/jet_ui/stepper/component_preview/basic.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/stepper/component_preview/with_numbers.html.erb',             dest: 'test/components/previews/jet_ui/stepper/component_preview/with_numbers.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/stepper/component_preview/with_descriptions.html.erb',        dest: 'test/components/previews/jet_ui/stepper/component_preview/with_descriptions.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/stepper/component_preview/with_icons.html.erb',               dest: 'test/components/previews/jet_ui/stepper/component_preview/with_icons.html.erb', type: :preview }
           ]
         },
         'timeline' => {
