@@ -14,7 +14,7 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline stepper].join(', ')}
+        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline stepper table].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
@@ -122,6 +122,22 @@ module JetUi
             { src: 'test/components/previews/jet_ui/empty/component_preview.rb',                                dest: 'test/components/previews/jet_ui/empty/component_preview.rb',             type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb',             dest: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb', type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb',          dest: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb', type: :preview }
+          ]
+        },
+        'table' => {
+          files: [
+            { src: 'app/components/jet_ui/table/component.rb',                                                    dest: 'app/components/jet_ui/table/component.rb' },
+            { src: 'app/components/jet_ui/table/thead_component.rb',                                              dest: 'app/components/jet_ui/table/thead_component.rb' },
+            { src: 'app/components/jet_ui/table/tbody_component.rb',                                              dest: 'app/components/jet_ui/table/tbody_component.rb' },
+            { src: 'app/components/jet_ui/table/tfoot_component.rb',                                              dest: 'app/components/jet_ui/table/tfoot_component.rb' },
+            { src: 'app/components/jet_ui/table/tr_component.rb',                                                 dest: 'app/components/jet_ui/table/tr_component.rb' },
+            { src: 'app/components/jet_ui/table/th_component.rb',                                                 dest: 'app/components/jet_ui/table/th_component.rb' },
+            { src: 'app/components/jet_ui/table/td_component.rb',                                                 dest: 'app/components/jet_ui/table/td_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/table.css',                                                     dest: 'app/assets/stylesheets/jet_ui/table.css' },
+            { src: 'test/components/jet_ui/table/component_test.rb',                                              dest: 'test/components/jet_ui/table/component_test.rb',                       type: :test },
+            { src: 'test/components/previews/jet_ui/table/component_preview.rb',                                  dest: 'test/components/previews/jet_ui/table/component_preview.rb',           type: :preview },
+            { src: 'test/components/previews/jet_ui/table/component_preview/default.html.erb',                    dest: 'test/components/previews/jet_ui/table/component_preview/default.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/table/component_preview/bordered.html.erb',                   dest: 'test/components/previews/jet_ui/table/component_preview/bordered.html.erb', type: :preview }
           ]
         },
         'stepper' => {

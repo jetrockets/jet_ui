@@ -1,0 +1,68 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .scroller {
+    @apply w-full overflow-auto;
+  }
+
+  .scroller-x {
+    @apply overflow-x-auto;
+  }
+
+  .table {
+    @apply w-auto;
+
+    thead {
+      @apply bg-(--color-surface);
+    }
+
+    th, td {
+      @apply px-3 py-2 text-sm border-b border-border;
+    }
+
+    th {
+      @apply font-semibold text-left text-foreground;
+    }
+
+    tfoot {
+      @apply font-semibold bg-muted;
+    }
+  }
+
+  .table-full {
+    @apply min-w-full;
+  }
+
+  .table-hovered {
+    tbody tr:hover td,
+    thead tr:hover th {
+      @apply bg-muted;
+    }
+  }
+
+  .table-bordered {
+    th, td {
+      @apply border border-border;
+    }
+  }
+
+  .table__th_sticky {
+    @apply sticky z-10 bg-(--color-surface) hover:bg-muted;
+  }
+
+  .table__th_sticky-left  { @apply left-0 text-left; }
+  .table__th_sticky-right { @apply right-0 text-right; }
+
+  .table__td_sticky       { @apply sticky bg-(--color-surface); }
+  .table__td_sticky-left  { @apply left-0 text-left; }
+  .table__td_sticky-right { @apply right-0 text-right; }
+
+  .table-xs { th, td { @apply px-2 py-2 text-xs; } }
+  .table-sm { th, td { @apply px-3 py-2 text-sm; } }
+  .table-md { th, td { @apply px-3 py-2.5 text-sm; } }
+  .table-lg { th, td { @apply px-4 py-4 text-base; } }
+
+  .table__actions {
+    @apply w-0 text-right;
+  }
+}

@@ -63,6 +63,7 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Divider | [docs/components/divider.md](docs/components/divider.md) |
 | Timeline | [docs/components/timeline.md](docs/components/timeline.md) |
 | Stepper | [docs/components/stepper.md](docs/components/stepper.md) |
+| Table | [docs/components/table.md](docs/components/table.md) |
 
 ## Generators
 

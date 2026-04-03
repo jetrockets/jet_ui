@@ -1,0 +1,16 @@
+<%= render JetUi::Table::Component.new(bordered: true, size: :xs) do %>
+  <%= render JetUi::Table::TheadComponent.new do %>
+    <%= render JetUi::Table::TrComponent.new do %>
+      <%= render JetUi::Table::ThComponent.new(sticky: :left) do %>Name<% end %>
+      <%= render JetUi::Table::ThComponent.new do %>Status<% end %>
+      <%= render JetUi::Table::ThComponent.new do %>Amount<% end %>
+    <% end %>
+  <% end %>
+  <%= render JetUi::Table::TbodyComponent.new do %>
+    <%= render JetUi::Table::TrComponent.new do %>
+      <%= render JetUi::Table::TdComponent.new(sticky: :left) do %>Item 1<% end %>
+      <%= render JetUi::Table::TdComponent.new do %>Active<% end %>
+      <%= render JetUi::Table::TdComponent.new do %>$100<% end %>
+    <% end %>
+  <% end %>
+<% end %>

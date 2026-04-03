@@ -1,0 +1,27 @@
+<%= render JetUi::Table::Component.new(hovered: true) do %>
+  <%= render JetUi::Table::TheadComponent.new do %>
+    <%= render JetUi::Table::TrComponent.new do %>
+      <%= render JetUi::Table::ThComponent.new do %>Name<% end %>
+      <%= render JetUi::Table::ThComponent.new do %>Status<% end %>
+      <%= render JetUi::Table::ThComponent.new do %>Amount<% end %>
+    <% end %>
+  <% end %>
+  <%= render JetUi::Table::TbodyComponent.new do %>
+    <%= render JetUi::Table::TrComponent.new do %>
+      <%= render JetUi::Table::TdComponent.new do %>Item 1<% end %>
+      <%= render JetUi::Table::TdComponent.new do %>Active<% end %>
+      <%= render JetUi::Table::TdComponent.new do %>$100<% end %>
+    <% end %>
+    <%= render JetUi::Table::TrComponent.new do %>
+      <%= render JetUi::Table::TdComponent.new do %>Item 2<% end %>
+      <%= render JetUi::Table::TdComponent.new do %>Inactive<% end %>
+      <%= render JetUi::Table::TdComponent.new do %>$200<% end %>
+    <% end %>
+  <% end %>
+  <%= render JetUi::Table::TfootComponent.new do %>
+    <%= render JetUi::Table::TrComponent.new do %>
+      <%= render JetUi::Table::TdComponent.new(colspan: 2) do %>Total<% end %>
+      <%= render JetUi::Table::TdComponent.new do %>$300<% end %>
+    <% end %>
+  <% end %>
+<% end %>
