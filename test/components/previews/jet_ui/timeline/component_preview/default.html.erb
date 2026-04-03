@@ -1,0 +1,23 @@
+<%= render JetUi::Timeline::Component.new do %>
+  <%= render JetUi::Timeline::ItemComponent.new do %>
+    <%= render JetUi::Timeline::DotComponent.new(variant: :success) %>
+    <%= render JetUi::Timeline::ContentComponent.new do %>
+      <%= render JetUi::Timeline::TimeComponent.new do %>2 hours ago<% end %>
+      <p>User signed up for the platform</p>
+    <% end %>
+  <% end %>
+  <%= render JetUi::Timeline::ItemComponent.new do %>
+    <%= render JetUi::Timeline::DotComponent.new(variant: :info) %>
+    <%= render JetUi::Timeline::ContentComponent.new do %>
+      <%= render JetUi::Timeline::TimeComponent.new do %>Yesterday<% end %>
+      <p>Order #1234 was completed</p>
+    <% end %>
+  <% end %>
+  <%= render JetUi::Timeline::ItemComponent.new do %>
+    <%= render JetUi::Timeline::DotComponent.new(variant: :warning) %>
+    <%= render JetUi::Timeline::ContentComponent.new do %>
+      <%= render JetUi::Timeline::TimeComponent.new do %>3 days ago<% end %>
+      <p>Payment pending review</p>
+    <% end %>
+  <% end %>
+<% end %>

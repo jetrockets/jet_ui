@@ -14,7 +14,7 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider].join(', ')}
+        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
@@ -122,6 +122,21 @@ module JetUi
             { src: 'test/components/previews/jet_ui/empty/component_preview.rb',                                dest: 'test/components/previews/jet_ui/empty/component_preview.rb',             type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb',             dest: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb', type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb',          dest: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb', type: :preview }
+          ]
+        },
+        'timeline' => {
+          files: [
+            { src: 'app/components/jet_ui/timeline/component.rb',                                                 dest: 'app/components/jet_ui/timeline/component.rb' },
+            { src: 'app/components/jet_ui/timeline/item_component.rb',                                            dest: 'app/components/jet_ui/timeline/item_component.rb' },
+            { src: 'app/components/jet_ui/timeline/dot_component.rb',                                             dest: 'app/components/jet_ui/timeline/dot_component.rb' },
+            { src: 'app/components/jet_ui/timeline/content_component.rb',                                         dest: 'app/components/jet_ui/timeline/content_component.rb' },
+            { src: 'app/components/jet_ui/timeline/time_component.rb',                                            dest: 'app/components/jet_ui/timeline/time_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/timeline.css',                                                  dest: 'app/assets/stylesheets/jet_ui/timeline.css' },
+            { src: 'test/components/jet_ui/timeline/component_test.rb',                                           dest: 'test/components/jet_ui/timeline/component_test.rb',                     type: :test },
+            { src: 'test/components/previews/jet_ui/timeline/component_preview.rb',                               dest: 'test/components/previews/jet_ui/timeline/component_preview.rb',         type: :preview },
+            { src: 'test/components/previews/jet_ui/timeline/component_preview/default.html.erb',                 dest: 'test/components/previews/jet_ui/timeline/component_preview/default.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/timeline/component_preview/with_icons.html.erb',              dest: 'test/components/previews/jet_ui/timeline/component_preview/with_icons.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/timeline/component_preview/variants.html.erb',                dest: 'test/components/previews/jet_ui/timeline/component_preview/variants.html.erb', type: :preview }
           ]
         },
         'divider' => {

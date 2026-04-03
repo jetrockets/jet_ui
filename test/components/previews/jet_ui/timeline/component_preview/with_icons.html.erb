@@ -1,0 +1,24 @@
+<%= render JetUi::Timeline::Component.new do %>
+  <%= render JetUi::Timeline::ItemComponent.new do %>
+    <%= render JetUi::Timeline::DotComponent.new(variant: :success, icon: 'check') %>
+    <%= render JetUi::Timeline::ContentComponent.new do %>
+      <%= render JetUi::Timeline::TimeComponent.new do %>2 hours ago<% end %>
+      <p class="font-medium">Order delivered</p>
+      <p class="text-sm text-muted-foreground">Package signed by John Doe</p>
+    <% end %>
+  <% end %>
+  <%= render JetUi::Timeline::ItemComponent.new do %>
+    <%= render JetUi::Timeline::DotComponent.new(variant: :info, icon: 'truck') %>
+    <%= render JetUi::Timeline::ContentComponent.new do %>
+      <%= render JetUi::Timeline::TimeComponent.new do %>1 day ago<% end %>
+      <p class="font-medium">Out for delivery</p>
+    <% end %>
+  <% end %>
+  <%= render JetUi::Timeline::ItemComponent.new do %>
+    <%= render JetUi::Timeline::DotComponent.new(variant: :default, icon: 'cube') %>
+    <%= render JetUi::Timeline::ContentComponent.new do %>
+      <%= render JetUi::Timeline::TimeComponent.new do %>2 days ago<% end %>
+      <p class="font-medium">Shipped from warehouse</p>
+    <% end %>
+  <% end %>
+<% end %>

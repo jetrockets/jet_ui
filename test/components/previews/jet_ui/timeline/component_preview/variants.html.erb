@@ -1,0 +1,11 @@
+<%= render JetUi::Timeline::Component.new do %>
+  <% %i[default info success warning error].each do |variant| %>
+    <%= render JetUi::Timeline::ItemComponent.new do %>
+      <%= render JetUi::Timeline::DotComponent.new(variant: variant) %>
+      <%= render JetUi::Timeline::ContentComponent.new do %>
+        <%= render JetUi::Timeline::TimeComponent.new do %><%= variant.to_s.capitalize %><% end %>
+        <p><%= variant.to_s.capitalize %> variant</p>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
