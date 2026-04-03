@@ -60,6 +60,7 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Tabs | [docs/components/tabs.md](docs/components/tabs.md) |
 | Empty | [docs/components/empty.md](docs/components/empty.md) |
 | List | [docs/components/list.md](docs/components/list.md) |
+| Divider | [docs/components/divider.md](docs/components/divider.md) |
 
 ## Generators
 

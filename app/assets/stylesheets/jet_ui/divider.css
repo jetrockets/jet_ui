@@ -1,0 +1,21 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .divider {
+    @apply flex items-center gap-3 text-sm text-muted-foreground;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: "";
+    @apply flex-1 border-t border-(--color-border);
+  }
+
+  .divider-start::before {
+    @apply flex-none w-4;
+  }
+
+  .divider-end::after {
+    @apply flex-none w-4;
+  }
+}

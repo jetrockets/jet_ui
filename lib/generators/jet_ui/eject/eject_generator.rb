@@ -14,7 +14,7 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list].join(', ')}
+        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
@@ -122,6 +122,16 @@ module JetUi
             { src: 'test/components/previews/jet_ui/empty/component_preview.rb',                                dest: 'test/components/previews/jet_ui/empty/component_preview.rb',             type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb',             dest: 'test/components/previews/jet_ui/empty/component_preview/with_actions.html.erb', type: :preview },
             { src: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb',          dest: 'test/components/previews/jet_ui/empty/component_preview/without_actions.html.erb', type: :preview }
+          ]
+        },
+        'divider' => {
+          files: [
+            { src: 'app/components/jet_ui/divider/component.rb',                                                  dest: 'app/components/jet_ui/divider/component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/divider.css',                                                   dest: 'app/assets/stylesheets/jet_ui/divider.css' },
+            { src: 'test/components/jet_ui/divider/component_test.rb',                                            dest: 'test/components/jet_ui/divider/component_test.rb',                      type: :test },
+            { src: 'test/components/previews/jet_ui/divider/component_preview.rb',                                dest: 'test/components/previews/jet_ui/divider/component_preview.rb',          type: :preview },
+            { src: 'test/components/previews/jet_ui/divider/component_preview/with_text.html.erb',                dest: 'test/components/previews/jet_ui/divider/component_preview/with_text.html.erb', type: :preview },
+            { src: 'test/components/previews/jet_ui/divider/component_preview/aligned.html.erb',                  dest: 'test/components/previews/jet_ui/divider/component_preview/aligned.html.erb', type: :preview }
           ]
         },
         'list' => {
