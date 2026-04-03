@@ -93,10 +93,11 @@ rails generate jet_ui:eject flash
 rails generate jet_ui:eject btn card flash
 ```
 
-By default both the test file and the ViewComponent preview are ejected. Use the flags below to skip either:
+By default the test, preview, and JS controller (when present) are all ejected. Use flags to skip any of them:
 
 ```bash
 rails generate jet_ui:eject btn --skip-test
 rails generate jet_ui:eject btn --skip-preview
+rails generate jet_ui:eject flash --skip-javascript
 rails generate jet_ui:eject btn --skip-test --skip-preview
 ```

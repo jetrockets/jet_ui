@@ -16,4 +16,5 @@ Examples:
     rails generate jet_ui:eject btn card flash
     rails generate jet_ui:eject btn --skip-test
     rails generate jet_ui:eject btn --skip-preview
+    rails generate jet_ui:eject flash --skip-javascript
     rails generate jet_ui:eject btn --skip-test --skip-preview
