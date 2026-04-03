@@ -1,0 +1,36 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .navbar {
+    @apply z-20 w-full backdrop-blur-xs bg-background/90;
+    @apply flex items-center justify-between gap-6;
+    height: var(--height-navbar);
+  }
+
+  @media (min-width: 768px) {
+    .navbar {
+      display: grid;
+      grid-template-columns: var(--width-sidebar) 1fr;
+    }
+  }
+
+  .navbar-sticky {
+    @apply sticky top-0;
+  }
+
+  .navbar__brand {
+    @apply flex items-center gap-3;
+  }
+
+  .navbar__content {
+    @apply flex-1;
+  }
+
+  .navbar__actions {
+    @apply flex items-center gap-2 ml-auto;
+  }
+
+  .navbar__main {
+    @apply flex items-center justify-between;
+  }
+}

@@ -14,12 +14,12 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline stepper table pagy flash].join(', ')}
+        Available components: #{%w[accordion btn card clipboard divider drawer dropdown empty flash header icon list modal navbar pagy popover sidebar spinner stat stepper table tabs timeline tooltip turbo_confirm].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
           rails generate jet_ui:eject flash
-          rails generate jet_ui:eject btn card flash
+          rails generate jet_ui:eject modal drawer
           rails generate jet_ui:eject btn --skip-test
           rails generate jet_ui:eject btn --skip-preview
           rails generate jet_ui:eject flash --skip-javascript
@@ -212,6 +212,128 @@ module JetUi
             { src: 'test/components/previews/jet_ui/list/component_preview.rb',                                 dest: 'test/components/previews/jet_ui/list/component_preview.rb',              type: :preview },
             { src: 'test/components/previews/jet_ui/list/component_preview/default.html.erb',                   dest: 'test/components/previews/jet_ui/list/component_preview/default.html.erb', type: :preview },
             { src: 'test/components/previews/jet_ui/list/component_preview/divided.html.erb',                   dest: 'test/components/previews/jet_ui/list/component_preview/divided.html.erb', type: :preview }
+          ]
+        },
+        'accordion' => {
+          files: [
+            { src: 'app/components/jet_ui/accordion/component.rb',                                              dest: 'app/components/jet_ui/accordion/component.rb' },
+            { src: 'app/components/jet_ui/accordion/summary_component.rb',                                      dest: 'app/components/jet_ui/accordion/summary_component.rb' },
+            { src: 'app/components/jet_ui/accordion/body_component.rb',                                         dest: 'app/components/jet_ui/accordion/body_component.rb' },
+            { src: 'test/components/jet_ui/accordion/component_test.rb',                                        dest: 'test/components/jet_ui/accordion/component_test.rb',                     type: :test },
+            { src: 'test/components/previews/jet_ui/accordion/component_preview.rb',                            dest: 'test/components/previews/jet_ui/accordion/component_preview.rb',         type: :preview }
+          ]
+        },
+        'clipboard' => {
+          files: [
+            { src: 'app/components/jet_ui/clipboard/component.rb',                                              dest: 'app/components/jet_ui/clipboard/component.rb' },
+            { src: 'app/assets/javascripts/jet_ui/clipboard_controller.js',                                     dest: 'app/assets/javascripts/jet_ui/clipboard_controller.js',                  type: :javascript },
+            { src: 'test/components/jet_ui/clipboard/component_test.rb',                                        dest: 'test/components/jet_ui/clipboard/component_test.rb',                     type: :test },
+            { src: 'test/components/previews/jet_ui/clipboard/component_preview.rb',                            dest: 'test/components/previews/jet_ui/clipboard/component_preview.rb',         type: :preview }
+          ]
+        },
+        'sidebar' => {
+          files: [
+            { src: 'app/components/jet_ui/sidebar/component.rb',                                                dest: 'app/components/jet_ui/sidebar/component.rb' },
+            { src: 'app/components/jet_ui/sidebar/link_component.rb',                                           dest: 'app/components/jet_ui/sidebar/link_component.rb' },
+            { src: 'app/components/jet_ui/sidebar/menu_component.rb',                                           dest: 'app/components/jet_ui/sidebar/menu_component.rb' },
+            { src: 'app/components/jet_ui/sidebar/section_component.rb',                                        dest: 'app/components/jet_ui/sidebar/section_component.rb' },
+            { src: 'app/components/jet_ui/sidebar/title_component.rb',                                          dest: 'app/components/jet_ui/sidebar/title_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/sidebar.css',                                                 dest: 'app/assets/stylesheets/jet_ui/sidebar.css' },
+            { src: 'test/components/jet_ui/sidebar/component_test.rb',                                          dest: 'test/components/jet_ui/sidebar/component_test.rb',                      type: :test },
+            { src: 'test/components/previews/jet_ui/sidebar/component_preview.rb',                              dest: 'test/components/previews/jet_ui/sidebar/component_preview.rb',          type: :preview }
+          ]
+        },
+        'header' => {
+          files: [
+            { src: 'app/components/jet_ui/header/component.rb',                                                 dest: 'app/components/jet_ui/header/component.rb' },
+            { src: 'app/components/jet_ui/header/heading_component.rb',                                         dest: 'app/components/jet_ui/header/heading_component.rb' },
+            { src: 'app/components/jet_ui/header/title_component.rb',                                           dest: 'app/components/jet_ui/header/title_component.rb' },
+            { src: 'app/components/jet_ui/header/subtitle_component.rb',                                        dest: 'app/components/jet_ui/header/subtitle_component.rb' },
+            { src: 'app/components/jet_ui/header/actions_component.rb',                                         dest: 'app/components/jet_ui/header/actions_component.rb' },
+            { src: 'test/components/jet_ui/header/component_test.rb',                                           dest: 'test/components/jet_ui/header/component_test.rb',                       type: :test },
+            { src: 'test/components/previews/jet_ui/header/component_preview.rb',                               dest: 'test/components/previews/jet_ui/header/component_preview.rb',           type: :preview }
+          ]
+        },
+        'navbar' => {
+          files: [
+            { src: 'app/components/jet_ui/navbar/component.rb',                                                 dest: 'app/components/jet_ui/navbar/component.rb' },
+            { src: 'app/components/jet_ui/navbar/brand_component.rb',                                           dest: 'app/components/jet_ui/navbar/brand_component.rb' },
+            { src: 'app/components/jet_ui/navbar/content_component.rb',                                         dest: 'app/components/jet_ui/navbar/content_component.rb' },
+            { src: 'app/components/jet_ui/navbar/main_component.rb',                                            dest: 'app/components/jet_ui/navbar/main_component.rb' },
+            { src: 'app/components/jet_ui/navbar/actions_component.rb',                                         dest: 'app/components/jet_ui/navbar/actions_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/navbar.css',                                                  dest: 'app/assets/stylesheets/jet_ui/navbar.css' },
+            { src: 'test/components/jet_ui/navbar/component_test.rb',                                           dest: 'test/components/jet_ui/navbar/component_test.rb',                       type: :test },
+            { src: 'test/components/previews/jet_ui/navbar/component_preview.rb',                               dest: 'test/components/previews/jet_ui/navbar/component_preview.rb',           type: :preview }
+          ]
+        },
+        'modal' => {
+          files: [
+            { src: 'app/components/jet_ui/modal/component.rb',                                                  dest: 'app/components/jet_ui/modal/component.rb' },
+            { src: 'app/components/jet_ui/modal/header_component.rb',                                           dest: 'app/components/jet_ui/modal/header_component.rb' },
+            { src: 'app/components/jet_ui/modal/body_component.rb',                                             dest: 'app/components/jet_ui/modal/body_component.rb' },
+            { src: 'app/components/jet_ui/modal/footer_component.rb',                                           dest: 'app/components/jet_ui/modal/footer_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/modal.css',                                                   dest: 'app/assets/stylesheets/jet_ui/modal.css' },
+            { src: 'app/assets/javascripts/jet_ui/modal_controller.js',                                         dest: 'app/assets/javascripts/jet_ui/modal_controller.js',                     type: :javascript },
+            { src: 'app/assets/javascripts/jet_ui/modals_controller.js',                                        dest: 'app/assets/javascripts/jet_ui/modals_controller.js',                    type: :javascript },
+            { src: 'test/components/jet_ui/modal/component_test.rb',                                            dest: 'test/components/jet_ui/modal/component_test.rb',                        type: :test },
+            { src: 'test/components/previews/jet_ui/modal/component_preview.rb',                                dest: 'test/components/previews/jet_ui/modal/component_preview.rb',            type: :preview }
+          ]
+        },
+        'drawer' => {
+          files: [
+            { src: 'app/components/jet_ui/drawer/component.rb',                                                 dest: 'app/components/jet_ui/drawer/component.rb' },
+            { src: 'app/components/jet_ui/drawer/header_component.rb',                                          dest: 'app/components/jet_ui/drawer/header_component.rb' },
+            { src: 'app/components/jet_ui/drawer/body_component.rb',                                            dest: 'app/components/jet_ui/drawer/body_component.rb' },
+            { src: 'app/components/jet_ui/drawer/footer_component.rb',                                          dest: 'app/components/jet_ui/drawer/footer_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/drawer.css',                                                  dest: 'app/assets/stylesheets/jet_ui/drawer.css' },
+            { src: 'app/assets/javascripts/jet_ui/drawer_controller.js',                                        dest: 'app/assets/javascripts/jet_ui/drawer_controller.js',                    type: :javascript },
+            { src: 'app/assets/javascripts/jet_ui/drawers_controller.js',                                       dest: 'app/assets/javascripts/jet_ui/drawers_controller.js',                   type: :javascript },
+            { src: 'test/components/jet_ui/drawer/component_test.rb',                                           dest: 'test/components/jet_ui/drawer/component_test.rb',                       type: :test },
+            { src: 'test/components/previews/jet_ui/drawer/component_preview.rb',                               dest: 'test/components/previews/jet_ui/drawer/component_preview.rb',           type: :preview }
+          ]
+        },
+        'dropdown' => {
+          files: [
+            { src: 'app/components/jet_ui/dropdown/component.rb',                                               dest: 'app/components/jet_ui/dropdown/component.rb' },
+            { src: 'app/components/jet_ui/dropdown/trigger_component.rb',                                       dest: 'app/components/jet_ui/dropdown/trigger_component.rb' },
+            { src: 'app/components/jet_ui/dropdown/menu_component.rb',                                          dest: 'app/components/jet_ui/dropdown/menu_component.rb' },
+            { src: 'app/components/jet_ui/dropdown/link_component.rb',                                          dest: 'app/components/jet_ui/dropdown/link_component.rb' },
+            { src: 'app/components/jet_ui/dropdown/button_component.rb',                                        dest: 'app/components/jet_ui/dropdown/button_component.rb' },
+            { src: 'app/components/jet_ui/dropdown/title_component.rb',                                         dest: 'app/components/jet_ui/dropdown/title_component.rb' },
+            { src: 'app/components/jet_ui/dropdown/divider_component.rb',                                       dest: 'app/components/jet_ui/dropdown/divider_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/dropdown.css',                                                dest: 'app/assets/stylesheets/jet_ui/dropdown.css' },
+            { src: 'app/assets/javascripts/jet_ui/dropdown_controller.js',                                      dest: 'app/assets/javascripts/jet_ui/dropdown_controller.js',                  type: :javascript },
+            { src: 'test/components/jet_ui/dropdown/component_test.rb',                                         dest: 'test/components/jet_ui/dropdown/component_test.rb',                     type: :test },
+            { src: 'test/components/previews/jet_ui/dropdown/component_preview.rb',                             dest: 'test/components/previews/jet_ui/dropdown/component_preview.rb',         type: :preview }
+          ]
+        },
+        'tooltip' => {
+          files: [
+            { src: 'app/components/jet_ui/tooltip/component.rb',                                                dest: 'app/components/jet_ui/tooltip/component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/tooltip.css',                                                 dest: 'app/assets/stylesheets/jet_ui/tooltip.css' },
+            { src: 'app/assets/javascripts/jet_ui/tooltip_controller.js',                                       dest: 'app/assets/javascripts/jet_ui/tooltip_controller.js',                   type: :javascript },
+            { src: 'test/components/jet_ui/tooltip/component_test.rb',                                          dest: 'test/components/jet_ui/tooltip/component_test.rb',                      type: :test },
+            { src: 'test/components/previews/jet_ui/tooltip/component_preview.rb',                              dest: 'test/components/previews/jet_ui/tooltip/component_preview.rb',          type: :preview }
+          ]
+        },
+        'popover' => {
+          files: [
+            { src: 'app/components/jet_ui/popover/component.rb',                                                dest: 'app/components/jet_ui/popover/component.rb' },
+            { src: 'app/components/jet_ui/popover/trigger_component.rb',                                        dest: 'app/components/jet_ui/popover/trigger_component.rb' },
+            { src: 'app/components/jet_ui/popover/content_component.rb',                                        dest: 'app/components/jet_ui/popover/content_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/popover.css',                                                 dest: 'app/assets/stylesheets/jet_ui/popover.css' },
+            { src: 'app/assets/javascripts/jet_ui/popover_controller.js',                                       dest: 'app/assets/javascripts/jet_ui/popover_controller.js',                   type: :javascript },
+            { src: 'test/components/jet_ui/popover/component_test.rb',                                          dest: 'test/components/jet_ui/popover/component_test.rb',                      type: :test },
+            { src: 'test/components/previews/jet_ui/popover/component_preview.rb',                              dest: 'test/components/previews/jet_ui/popover/component_preview.rb',          type: :preview }
+          ]
+        },
+        'turbo_confirm' => {
+          files: [
+            { src: 'app/components/jet_ui/turbo_confirm/component.rb',                                          dest: 'app/components/jet_ui/turbo_confirm/component.rb' },
+            { src: 'app/components/jet_ui/turbo_confirm/component.html.erb',                                    dest: 'app/components/jet_ui/turbo_confirm/component.html.erb' },
+            { src: 'app/assets/javascripts/jet_ui/turbo_confirm_controller.js', dest: 'app/assets/javascripts/jet_ui/turbo_confirm_controller.js', type: :javascript },
+            { src: 'test/components/jet_ui/turbo_confirm/component_test.rb',                                    dest: 'test/components/jet_ui/turbo_confirm/component_test.rb',                type: :test },
+            { src: 'test/components/previews/jet_ui/turbo_confirm/component_preview.rb',                        dest: 'test/components/previews/jet_ui/turbo_confirm/component_preview.rb',    type: :preview }
           ]
         }
       }.freeze

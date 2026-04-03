@@ -1,0 +1,38 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .popover {
+    @apply absolute z-10 w-64 text-sm transition-opacity duration-300 shadow-sm opacity-0 pointer-events-none;
+    @apply text-muted-foreground bg-popover border border-border rounded-dropdown;
+  }
+
+  .popover::after {
+    @apply absolute rotate-45 size-2.5 bg-popover border border-border;
+    content: "";
+  }
+
+  .popover[data-placement^="top"]::after {
+    @apply bottom-0 -translate-x-1/2 translate-y-1/2 border-t-0 border-l-0 left-1/2;
+  }
+
+  .popover[data-placement^="bottom"]::after {
+    @apply top-0 -translate-x-1/2 -translate-y-1/2 border-b-0 border-r-0 left-1/2 bg-muted;
+  }
+
+  .popover[data-placement^="left"]::after {
+    @apply right-0 translate-x-1/2 -translate-y-1/2 border-b-0 border-l-0 top-1/2;
+  }
+
+  .popover[data-placement^="right"]::after {
+    @apply left-0 -translate-x-1/2 -translate-y-1/2 border-t-0 border-r-0 top-1/2;
+  }
+
+  .popover__title {
+    @apply px-3 py-3 font-semibold text-foreground bg-muted border-b border-border;
+    @apply rounded-tl-dropdown rounded-tr-dropdown;
+  }
+
+  .popover__body {
+    @apply p-3;
+  }
+}

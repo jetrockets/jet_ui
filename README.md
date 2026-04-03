@@ -70,6 +70,17 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Table | [docs/components/table.md](docs/components/table.md) |
 | Pagy | [docs/components/pagy.md](docs/components/pagy.md) |
 | Flash ⚡ | [docs/components/flash.md](docs/components/flash.md) |
+| Accordion | [docs/components/accordion.md](docs/components/accordion.md) |
+| Clipboard ⚡ | [docs/components/clipboard.md](docs/components/clipboard.md) |
+| Sidebar | [docs/components/sidebar.md](docs/components/sidebar.md) |
+| Header | [docs/components/header.md](docs/components/header.md) |
+| Navbar | [docs/components/navbar.md](docs/components/navbar.md) |
+| Modal ⚡ | [docs/components/modal.md](docs/components/modal.md) |
+| Drawer ⚡ | [docs/components/drawer.md](docs/components/drawer.md) |
+| Dropdown ⚡ | [docs/components/dropdown.md](docs/components/dropdown.md) |
+| Tooltip ⚡ | [docs/components/tooltip.md](docs/components/tooltip.md) |
+| Popover ⚡ | [docs/components/popover.md](docs/components/popover.md) |
+| Turbo Confirm ⚡ | [docs/components/turbo_confirm.md](docs/components/turbo_confirm.md) |
 
 ⚡ Requires Stimulus (configured automatically by `jet_ui:install`).
 

@@ -1,0 +1,20 @@
+<dialog id="turbo-confirm" tabindex="-1"
+        class="modal w-2xl animate-slide-up"
+        data-controller="turbo-confirm">
+  <form method="dialog">
+    <div class="modal__header modal__header-bordered">
+      <div>
+        <h3 class="modal__title">Are you absolutely sure?</h3>
+      </div>
+    </div>
+
+    <div class="modal__body">
+      <p>This cannot be undone.</p>
+    </div>
+
+    <div class="modal__footer modal__footer-bordered flex flex-row gap-2 items-start justify-end">
+      <%= helpers.jet_ui.btn "Cancel", type: :submit, variant: :outline, value: "cancel" %>
+      <%= helpers.jet_ui.btn "Yes, I'm sure", type: :submit, variant: :danger, value: "confirm" %>
+    </div>
+  </form>
+</dialog>

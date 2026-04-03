@@ -17,3 +17,11 @@
 @import "./jet_ui/table.css";
 @import "./jet_ui/pagy.css";
 @import "./jet_ui/flash.css";
+@import "./jet_ui/sidebar.css";
+@import "./jet_ui/header.css";
+@import "./jet_ui/navbar.css";
+@import "./jet_ui/modal.css";
+@import "./jet_ui/drawer.css";
+@import "./jet_ui/dropdown.css";
+@import "./jet_ui/tooltip.css";
+@import "./jet_ui/popover.css";

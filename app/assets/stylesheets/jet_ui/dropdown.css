@@ -1,0 +1,33 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .dropdown {
+    @apply relative w-fit;
+  }
+
+  .dropdown__menu {
+    @apply absolute z-40 hidden overflow-auto py-1.5 shadow min-w-44 animate-fade-in max-w-96 max-h-96;
+    @apply bg-popover border border-border text-foreground rounded-dropdown;
+  }
+
+  .dropdown__title {
+    @apply px-4 py-1 font-semibold text-sm text-foreground;
+  }
+
+  .dropdown__item {
+    @apply block mx-2;
+  }
+
+  .dropdown__link {
+    @apply block w-full px-2 py-1.5 text-sm text-left cursor-pointer rounded-btn-md;
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .dropdown__link-active {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .dropdown__divider {
+    @apply pb-2 mb-2 border-b border-border;
+  }
+}

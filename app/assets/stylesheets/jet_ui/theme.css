@@ -1,3 +1,20 @@
+@layer base {
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0.7; transform: translateY(2rem); }
+    to   { opacity: 1;   transform: translateY(0); }
+  }
+
+  @keyframes slideLeft {
+    from { opacity: 0.8; transform: translateX(3rem); }
+    to   { opacity: 1;   transform: translateX(0); }
+  }
+}
+
 :root {
   --accent-hue: 262;
   --accent-chroma: 0.245;
@@ -6,6 +23,17 @@
 }
 
 @theme {
+  /* Layout */
+  --height-navbar: 54px;
+  --width-sidebar: 220px;
+  --spacing-navbar: var(--height-navbar);
+  --spacing-sidebar: var(--width-sidebar);
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.15s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-in-out;
+  --animate-slide-left: slideLeft 0.3s ease-in-out;
+
   /* Radius */
   --radius-btn-xs: calc(var(--radius-md) * 0.75);
   --radius-btn-sm: calc(var(--radius-md) * 1);
@@ -29,6 +57,12 @@
   --color-gray-800: oklch(0.278 var(--gray-chroma) var(--accent-hue));
   --color-gray-900: oklch(0.21  var(--gray-chroma) var(--accent-hue));
   --color-gray-950: oklch(0.13  var(--gray-chroma) var(--accent-hue));
+
+  /* Card / Popover (semantic surface tokens) */
+  --color-card:             var(--color-surface);
+  --color-card-foreground:  var(--color-surface-foreground);
+  --color-popover:          var(--color-surface);
+  --color-popover-foreground: var(--color-surface-foreground);
 
   /* Layout */
   --color-background:         var(--color-gray-50);

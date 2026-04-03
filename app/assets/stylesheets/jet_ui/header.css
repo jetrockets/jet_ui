@@ -1,0 +1,65 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .header {
+    @apply flex gap-y-2 py-3;
+    column-gap: calc(var(--spacing) * 8);
+  }
+
+  .header--row { flex-direction: column; }
+  .header--col { flex-direction: column; }
+
+  .header--align-start   { @apply items-start; }
+  .header--align-center  { @apply items-center; }
+  .header--align-end     { @apply items-end; }
+
+  .header--justify-start   { @apply justify-start; }
+  .header--justify-center  { @apply justify-center; }
+  .header--justify-end     { @apply justify-end; }
+  .header--justify-between { @apply justify-between; }
+
+  .header--bordered {
+    @apply pb-4 border-b border-border;
+  }
+
+  .header__heading {
+    @apply flex-1 flex flex-col gap-2;
+  }
+
+  .header__title {
+    @apply flex items-center gap-2 flex-1 font-semibold tracking-tight text-3xl;
+  }
+
+  .header__subtitle {
+    @apply text-base text-muted-foreground;
+  }
+
+  .header__actions {
+    @apply flex items-center shrink-0 gap-2 whitespace-nowrap;
+  }
+
+  @media (min-width: 768px) {
+    .header {
+      padding-block: calc(var(--spacing) * 6);
+    }
+
+    .header--row {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .header {
+      column-gap: calc(var(--spacing) * 16);
+    }
+
+    .header--sticky {
+      position: sticky;
+      z-index: 30;
+      top: var(--height-navbar);
+      background-color: color-mix(in oklab, var(--color-muted) 90%, transparent);
+      -webkit-backdrop-filter: blur(var(--blur-xs));
+      backdrop-filter: blur(var(--blur-xs));
+    }
+  }
+}
