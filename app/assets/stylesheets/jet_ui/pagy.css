@@ -1,0 +1,54 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .pagy {
+    @apply inline-flex;
+
+    a:not(.gap) {
+      @apply relative flex items-center justify-center size-8 text-muted-foreground border border-border;
+
+      &:first-child {
+        @apply text-transparent;
+        border-top-left-radius: var(--radius-btn-md);
+        border-bottom-left-radius: var(--radius-btn-md);
+      }
+
+      &:last-child {
+        @apply text-transparent;
+        border-top-right-radius: var(--radius-btn-md);
+        border-bottom-right-radius: var(--radius-btn-md);
+      }
+
+      &:hover {
+        @apply bg-muted;
+      }
+
+      &:not(:last-child) {
+        @apply border-r-0;
+      }
+
+      &:first-child::before,
+      &:last-child::before {
+        @apply absolute size-4 content-[''] text-muted-foreground;
+        background-color: currentColor;
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5'/%3E%3C/svg%3E");
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: 100%;
+      }
+
+      &:last-child::before {
+        transform: rotate(180deg);
+      }
+
+      &:not([href]) {
+        @apply relative inline-flex items-center h-8 px-2 cursor-not-allowed bg-transparent;
+      }
+
+      &.current {
+        @apply relative z-10 flex items-center justify-center cursor-default size-8;
+        @apply bg-(--color-accent) border-(--color-accent) text-(--color-accent-foreground);
+      }
+    }
+  }
+}
