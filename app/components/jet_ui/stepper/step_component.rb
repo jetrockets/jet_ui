@@ -33,16 +33,18 @@ module JetUi
       end
 
       def indicator
-        content_tag(:div, class: 'stepper__indicator') do
-          if @status == :completed && !@icon
-            render(JetUi::Icon::Component.new('check', size: 5))
-          elsif @icon
-            render(JetUi::Icon::Component.new(@icon, size: 5))
-          elsif @number
-            content_tag(:span, @number.to_s, class: 'stepper__number')
-          else
-            content_tag(:span, nil, class: 'stepper__dot')
-          end
+        content_tag(:div, class: 'stepper__indicator') { indicator_inner }
+      end
+
+      def indicator_inner
+        if @status == :completed && !@icon
+          render(JetUi::Icon::Component.new('check', size: 5))
+        elsif @icon
+          render(JetUi::Icon::Component.new(@icon, size: 5))
+        elsif @number
+          content_tag(:span, @number.to_s, class: 'stepper__number')
+        else
+          content_tag(:span, nil, class: 'stepper__dot')
         end
       end
 

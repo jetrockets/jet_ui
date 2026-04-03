@@ -18,8 +18,8 @@ module JetUi
       def classes
         class_names(
           @options.delete(:class),
-          { 'table__actions': @actions },
-          { 'table__td_sticky': @sticky },
+          { table__actions: @actions },
+          { table__td_sticky: @sticky },
           { 'table__td_sticky-left': @sticky == :left },
           { 'table__td_sticky-right': @sticky == :right }
         )

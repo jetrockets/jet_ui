@@ -8,7 +8,8 @@ module JetUi
       end
 
       def call
-        content_tag :nav, class: class_names('stepper', @options.delete(:class)), 'aria-label': 'Progress', **@options do
+        content_tag :nav, class: class_names('stepper', @options.delete(:class)), 'aria-label': 'Progress',
+                          **@options do
           content_tag :ol, content, class: 'stepper__list'
         end
       end
