@@ -1,0 +1,50 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .flash-container {
+    @apply fixed flex flex-col items-end gap-2 top-3 left-3 right-3 z-[100];
+    @apply md:left-auto md:w-fit;
+  }
+
+  .flash-item {
+    @apply relative w-full py-3 pl-4 pr-12 text-sm rounded-xl text-white;
+    @apply md:max-w-lg md:w-fit;
+    min-width: 20rem;
+    opacity: 0;
+    transform: translateX(25%);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  .flash-item--hidden {
+    display: none;
+  }
+
+  .flash-item--visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .flash-item-info {
+    background-color: var(--color-info);
+  }
+
+  .flash-item-success {
+    background-color: var(--color-success);
+  }
+
+  .flash-item-warning {
+    background-color: var(--color-warning);
+  }
+
+  .flash-item-error {
+    background-color: var(--color-destructive);
+  }
+
+  .flash-item__message {
+    @apply flex-1;
+  }
+
+  .flash-item__close {
+    @apply absolute top-2.5 right-3 text-white transition duration-300 focus:outline-none opacity-80 hover:opacity-100;
+  }
+}

@@ -3,9 +3,17 @@ Description:
     be customised locally. The ejected files take precedence over the gem's
     built-in versions, similar to how `rails generate devise:views` works.
 
-    Available components: btn, card
+    For components that include a Stimulus controller (e.g. flash), the JS
+    file is also ejected alongside the Ruby and CSS files.
+
+    Available components:
+      btn, card, icon, spinner, avatar, breadcrumbs, tabs, empty, list,
+      divider, timeline, stepper, table, pagy, flash
 
 Examples:
     rails generate jet_ui:eject btn
-    rails generate jet_ui:eject card
-    rails generate jet_ui:eject btn card
+    rails generate jet_ui:eject flash
+    rails generate jet_ui:eject btn card flash
+    rails generate jet_ui:eject btn --skip-test
+    rails generate jet_ui:eject btn --skip-preview
+    rails generate jet_ui:eject btn --skip-test --skip-preview

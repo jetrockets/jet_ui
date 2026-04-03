@@ -3,6 +3,7 @@
 require 'rails'
 require 'action_controller/railtie'
 require 'action_view/railtie'
+require 'turbo-rails'
 require 'view_component'
 require 'view_component/test_helpers'
 require 'view_component/test_case'

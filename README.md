@@ -24,7 +24,11 @@ bundle install
 rails generate jet_ui:install
 ```
 
-The generator detects your Tailwind CSS source file and injects a single import that covers all component stylesheets. When the gem is updated with new components, your app picks them up automatically on the next CSS build — no manual changes needed.
+The generator:
+- Detects your Tailwind CSS source file and injects a single import covering all component stylesheets
+- Registers JetUi Stimulus controllers in your app's controllers index
+
+When the gem is updated, both CSS and JS are picked up automatically — no further changes needed. Safe to re-run after upgrades.
 
 ## Usage
 
@@ -65,12 +69,15 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Stepper | [docs/components/stepper.md](docs/components/stepper.md) |
 | Table | [docs/components/table.md](docs/components/table.md) |
 | Pagy | [docs/components/pagy.md](docs/components/pagy.md) |
+| Flash ⚡ | [docs/components/flash.md](docs/components/flash.md) |
+
+⚡ Requires Stimulus (configured automatically by `jet_ui:install`).
 
 ## Generators
 
 ### `jet_ui:install`
 
-Sets up JetUi in your application:
+Sets up JetUi in your application (CSS + JS). Safe to re-run after gem upgrades — already-configured steps are skipped:
 
 ```bash
 rails generate jet_ui:install
@@ -78,12 +85,12 @@ rails generate jet_ui:install
 
 ### `jet_ui:eject`
 
-Copies a component's source files into your application for local customisation. Ejected files take precedence over the gem's versions automatically.
+Copies a component's source files into your application for local customisation. Ejected files take precedence over the gem's versions automatically. For components with a Stimulus controller (e.g. `flash`), the JS file is ejected too.
 
 ```bash
 rails generate jet_ui:eject btn
-rails generate jet_ui:eject card
-rails generate jet_ui:eject btn card
+rails generate jet_ui:eject flash
+rails generate jet_ui:eject btn card flash
 ```
 
 By default both the test file and the ViewComponent preview are ejected. Use the flags below to skip either:

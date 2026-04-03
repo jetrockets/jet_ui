@@ -1,0 +1,14 @@
+<%= helpers.turbo_frame_tag @frame_id, class: 'flash-container', target: :_top, refresh: :morph do %>
+  <% flash_messages.each do |key, message| %>
+    <% next if message.blank? %>
+
+    <%= content_tag :div, id: "flash-#{key}", class: item_class(key), data: item_data do %>
+      <p class="flash-item__message"><%= message.html_safe %></p>
+      <% if @dismissible %>
+        <button class="flash-item__close" type="button" data-action="flash#close" aria-label="Close">
+          <%= render(JetUi::Icon::Component.new('x-mark', size: 5)) %>
+        </button>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

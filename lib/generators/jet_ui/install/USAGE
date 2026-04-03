@@ -1,9 +1,11 @@
 Description:
     Sets up JetUi in your Rails application.
 
-    - Injects `@import "jet_ui"` into your CSS entrypoint
-    - Shows Tailwind CSS content configuration hints
-    - Prints usage examples
+    - Injects the JetUi CSS import into your Tailwind entrypoint
+    - Registers JetUi Stimulus controllers via eagerLoadControllersFrom
+      (requires @hotwired/stimulus-loading, included in default Rails apps)
+
+    Safe to run multiple times — already-configured steps are skipped.
 
 Example:
     rails generate jet_ui:install

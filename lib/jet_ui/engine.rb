@@ -11,6 +11,17 @@ module JetUi
       end
     end
 
+    initializer 'jet_ui.importmap', after: 'importmap' do |app|
+      if app.respond_to?(:importmap)
+        app.importmap.pin_all_from(
+          root.join('app/assets/javascripts/jet_ui'),
+          under: 'jet_ui'
+        )
+        app.config.importmap.paths << root.join('app/assets/javascripts')
+        app.config.importmap.cache_sweepers << root.join('app/assets/javascripts')
+      end
+    end
+
     initializer 'jet_ui.helpers' do
       require root.join('app/helpers/jet_ui_helper').to_s
       ActiveSupport.on_load(:action_view) do

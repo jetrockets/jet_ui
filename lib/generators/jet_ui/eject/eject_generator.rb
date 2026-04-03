@@ -14,7 +14,7 @@ module JetUi
         so they can be customised locally. Ejected files take precedence over
         the gem's built-in versions automatically — no extra configuration needed.
 
-        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline stepper table pagy].join(', ')}
+        Available components: #{%w[btn card icon spinner avatar breadcrumbs tabs empty list divider timeline stepper table pagy flash].join(', ')}
 
         Examples:
           rails generate jet_ui:eject btn
@@ -185,6 +185,16 @@ module JetUi
             { src: 'test/components/previews/jet_ui/divider/component_preview.rb',                                dest: 'test/components/previews/jet_ui/divider/component_preview.rb',          type: :preview },
             { src: 'test/components/previews/jet_ui/divider/component_preview/with_text.html.erb',                dest: 'test/components/previews/jet_ui/divider/component_preview/with_text.html.erb', type: :preview },
             { src: 'test/components/previews/jet_ui/divider/component_preview/aligned.html.erb',                  dest: 'test/components/previews/jet_ui/divider/component_preview/aligned.html.erb', type: :preview }
+          ]
+        },
+        'flash' => {
+          files: [
+            { src: 'app/components/jet_ui/flash/component.rb',                                                   dest: 'app/components/jet_ui/flash/component.rb' },
+            { src: 'app/components/jet_ui/flash/component.html.erb',                                             dest: 'app/components/jet_ui/flash/component.html.erb' },
+            { src: 'app/assets/stylesheets/jet_ui/flash.css',                                                    dest: 'app/assets/stylesheets/jet_ui/flash.css' },
+            { src: 'app/assets/javascripts/jet_ui/flash_controller.js',                                          dest: 'app/assets/javascripts/jet_ui/flash_controller.js' },
+            { src: 'test/components/jet_ui/flash/component_test.rb',                                             dest: 'test/components/jet_ui/flash/component_test.rb',                         type: :test },
+            { src: 'test/components/previews/jet_ui/flash/component_preview.rb',                                 dest: 'test/components/previews/jet_ui/flash/component_preview.rb',             type: :preview }
           ]
         },
         'list' => {

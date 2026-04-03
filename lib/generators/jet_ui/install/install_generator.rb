@@ -14,10 +14,16 @@ module JetUi
       desc <<~DESC
         Sets up JetUi in your Rails application.
 
-        Detects your Tailwind CSS source file and injects a single @import
-        that covers all JetUi component stylesheets. When the gem is updated
-        with new components, your app picks them up automatically on the next
-        CSS build — no manual changes needed.
+        1. CSS — Detects your Tailwind source file and injects a single @import
+           that covers all JetUi component stylesheets. New components added in
+           future gem updates are picked up automatically on the next CSS build.
+
+        2. JS — Adds eagerLoadControllersFrom("jet_ui", application) to your
+           Stimulus controllers index. All current and future JetUi Stimulus
+           controllers (flash, modal, etc.) are registered automatically when
+           you update the gem — no further changes needed.
+
+        Safe to run multiple times — already-configured steps are skipped.
 
         Supported Tailwind source file locations:
           app/assets/tailwind/application.css
@@ -46,8 +52,29 @@ module JetUi
         end
       end
 
+      def inject_js
+        path = File.join(destination_root, JS_CONTROLLERS_FILE)
+        unless File.exist?(path)
+          say '  No Stimulus controllers index found — skipping JS setup.', :yellow
+          say '  If you use Stimulus, add this line to your controllers index manually:', :yellow
+          say %(    eagerLoadControllersFrom("jet_ui", application)), :yellow
+          return
+        end
+
+        if File.read(path).include?('jet_ui')
+          say "  JetUi controllers already registered in #{JS_CONTROLLERS_FILE}", :yellow
+        else
+          insert_into_file JS_CONTROLLERS_FILE, after: /eagerLoadControllersFrom\("controllers".*\n/ do
+            %(eagerLoadControllersFrom("jet_ui", application)\n)
+          end
+          say "  Registered JetUi controllers in #{JS_CONTROLLERS_FILE}", :green
+        end
+      end
+
       def show_usage
         say "\nJetUi installed!\n", :green
+        say 'Add flash messages to your layout (e.g. app/views/layouts/application.html.erb):'
+        say %(  <%= jet_ui.flash(messages: flash) %>\n)
         say 'Usage in your views:'
         say %(  <%= jet_ui.btn variant: :default do %>Save<% end %>)
         say %(  <%= jet_ui.card do %>)
@@ -61,6 +88,8 @@ module JetUi
         say '  rails generate jet_ui:eject card'
         say "  rails generate jet_ui:eject btn card\n"
       end
+
+      JS_CONTROLLERS_FILE = 'app/javascript/controllers/index.js'
 
       TAILWIND_SOURCE_FILES = %w[
         app/assets/tailwind/application.css
