@@ -7,13 +7,6 @@
     height: var(--height-navbar);
   }
 
-  @media (min-width: 768px) {
-    .navbar {
-      display: grid;
-      grid-template-columns: var(--width-sidebar) 1fr;
-    }
-  }
-
   .navbar-sticky {
     @apply sticky top-0;
   }
@@ -23,7 +16,7 @@
   }
 
   .navbar__content {
-    @apply flex-1;
+    @apply flex flex-1 items-center justify-between;
   }
 
   .navbar__actions {
@@ -32,5 +25,12 @@
 
   .navbar__main {
     @apply flex items-center justify-between;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    display: grid;
+    grid-template-columns: var(--width-sidebar) 1fr;
   }
 }

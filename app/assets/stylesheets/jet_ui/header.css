@@ -37,29 +37,29 @@
   .header__actions {
     @apply flex items-center shrink-0 gap-2 whitespace-nowrap;
   }
+}
 
-  @media (min-width: 768px) {
-    .header {
-      padding-block: calc(var(--spacing) * 6);
-    }
-
-    .header--row {
-      flex-direction: row;
-    }
+@media (min-width: 768px) {
+  .header {
+    padding-block: calc(var(--spacing) * 6);
   }
 
-  @media (min-width: 1024px) {
-    .header {
-      column-gap: calc(var(--spacing) * 16);
-    }
+  .header--row {
+    flex-direction: row;
+  }
+}
 
-    .header--sticky {
-      position: sticky;
-      z-index: 30;
-      top: var(--height-navbar);
-      background-color: color-mix(in oklab, var(--color-muted) 90%, transparent);
-      -webkit-backdrop-filter: blur(var(--blur-xs));
-      backdrop-filter: blur(var(--blur-xs));
-    }
+@media (min-width: 1024px) {
+  .header {
+    column-gap: calc(var(--spacing) * 16);
+  }
+
+  .header--sticky {
+    position: sticky;
+    z-index: 30;
+    top: var(--height-navbar);
+    background-color: color-mix(in oklab, var(--color-muted) 90%, transparent);
+    -webkit-backdrop-filter: blur(var(--blur-xs));
+    backdrop-filter: blur(var(--blur-xs));
   }
 }
