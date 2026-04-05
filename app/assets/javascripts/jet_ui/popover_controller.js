@@ -27,14 +27,12 @@ export default class PopoverController extends Controller {
   }
 
   #showContent() {
-    this.contentTarget.classList.remove("opacity-0", "pointer-events-none")
-    this.contentTarget.classList.add("opacity-100", "pointer-events-auto")
+    this.contentTarget.classList.add("popover--visible")
     this.#updatePosition()
   }
 
   #hideContent() {
-    this.contentTarget.classList.remove("opacity-100", "pointer-events-auto")
-    this.contentTarget.classList.add("opacity-0", "pointer-events-none")
+    this.contentTarget.classList.remove("popover--visible")
   }
 
   #handleMorph() {

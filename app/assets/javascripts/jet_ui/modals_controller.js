@@ -7,7 +7,7 @@ export default class ModalsController extends Controller {
     this.openedDialog?.removeEventListener("click", this.#closeOnBackdropClick.bind(this))
   }
 
-  show(e) {
+  open(e) {
     this.openedDialog = this.#getDialog(e)
     this.openedDialog?.addEventListener("click", this.#closeOnBackdropClick.bind(this))
     this.openedDialog?.showModal()

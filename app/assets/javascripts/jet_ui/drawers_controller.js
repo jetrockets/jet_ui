@@ -10,7 +10,7 @@ export default class DrawersController extends Controller {
     this.#removeDialogListeners()
   }
 
-  show(e) {
+  open(e) {
     this.openedDialog = this.#getDialog(e)
     this.#addDialogListeners()
     this.openedDialog?.showModal()

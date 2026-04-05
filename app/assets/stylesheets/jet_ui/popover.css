@@ -2,8 +2,16 @@
 
 @layer components {
   .popover {
-    @apply absolute z-10 w-64 text-sm transition-opacity duration-300 shadow-sm opacity-0 pointer-events-none;
+    @apply absolute z-10 w-64 text-sm shadow-sm;
     @apply text-muted-foreground bg-popover border border-border rounded-dropdown;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .popover--visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .popover::after {
