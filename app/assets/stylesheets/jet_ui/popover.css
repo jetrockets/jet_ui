@@ -1,6 +1,11 @@
 @layer theme, base, components, utilities;
 
 @layer components {
+  [data-controller~="popover"] {
+    position: relative;
+    width: fit-content;
+  }
+
   .popover {
     @apply absolute z-10 w-64 text-sm shadow-sm;
     @apply text-muted-foreground bg-popover border border-border rounded-dropdown;
