@@ -17,7 +17,6 @@ module JetUi
           root.join('app/assets/javascripts/jet_ui'),
           under: 'jet_ui'
         )
-        app.config.importmap.paths << root.join('app/assets/javascripts')
         app.config.importmap.cache_sweepers << root.join('app/assets/javascripts')
       end
     end
