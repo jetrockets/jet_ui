@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.8] - 2026-07-09
+
+### Added
+- `@jetrockets/jet-ui` npm package for Vite/esbuild/Webpack users — import Stimulus controllers without vendoring
+- `JsRuntime` module for auto-detecting JS bundler (Vite, esbuild, Webpack) vs importmap
+- `jet_ui:install` generator now detects runtime and prints runtime-specific setup instructions
+
+### Fixed
+- Importmap crash (`Errno::EISDIR`) — removed invalid directory path from `importmap.paths`
+
 ## [0.2.7] - 2026-05-29
 
 ### Added
