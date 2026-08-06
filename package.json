@@ -4,26 +4,22 @@
   "description": "Stimulus controllers for JetRockets jet_ui Rails components",
   "license": "MIT",
   "type": "module",
-  "main": "dist/jet_ui.umd.cjs",
   "module": "src/index.js",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./dist/jet_ui.umd.cjs"
+      "import": "./src/index.js"
     },
     "./css": "./app/assets/stylesheets/jet_ui.css",
     "./css/*": "./app/assets/stylesheets/jet_ui/*"
   },
   "files": [
-    "dist",
     "src",
     "app/assets/javascripts",
     "app/assets/stylesheets"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "prepare": "vite build"
+    "build": "vite build"
   },
   "publishConfig": {
     "access": "public"
