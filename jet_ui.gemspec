@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler-audit'
   spec.add_development_dependency 'capybara'
   spec.add_development_dependency 'minitest'
-  spec.add_development_dependency 'rails', '8.1.3'
+  spec.add_development_dependency 'rails', '8.1.3.1'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-minitest'
   spec.add_development_dependency 'rubocop-rails'
