@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.9] - 2026-08-11
+
+### Fixed
+- Security vulnerability: update Rails to 8.1.3.1 (CVE-2026-66066 — arbitrary file read and RCE in Active Storage variant processing)
+
 ## [0.2.8] - 2026-07-09
 
 ### Added

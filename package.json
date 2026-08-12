@@ -1,6 +1,6 @@
 {
   "name": "@jetrockets/jet_ui",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Stimulus controllers for JetRockets jet_ui Rails components",
   "license": "MIT",
   "type": "module",
