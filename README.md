@@ -1,4 +1,4 @@
-# JetUi
+![JetUI Logo](app/assets/images/logo-white.svg)
 
 [![Gem Version](https://img.shields.io/gem/v/jet_ui)](https://rubygems.org/gems/jet_ui)
 [![Checks](https://img.shields.io/github/actions/workflow/status/jetrockets/jet_ui/ci.yml?label=checks&logo=github)](https://github.com/jetrockets/jet_ui/actions/workflows/ci.yml)
