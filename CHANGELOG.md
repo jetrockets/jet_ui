@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.10] - 2026-08-22
+
+### Changed
+- Upgrade development Ruby version to 4.0.6
+
+### Added
+- Automated publishing to npm and RubyGems on version tags via GitHub Actions
+- CI check to ensure package.json version matches lib/jet_ui/version.rb
+
 ## [0.2.9] - 2026-08-11
 
 ### Fixed
