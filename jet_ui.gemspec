@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name        = 'jet_ui'
   spec.version     = JetUi::VERSION
   spec.authors     = ['JetRockets']
-  spec.email       = ['hello@jetrockets.com']
+  spec.email       = ['rafael.pena-azar@jetrockets.com']
 
   spec.summary     = 'ViewComponent-based UI library for Rails applications'
   spec.description = 'Reusable ViewComponent UI components matching the JetRockets design system at ui.jetrockets.com'
