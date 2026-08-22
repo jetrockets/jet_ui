@@ -67,23 +67,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Extract version from tag
-        id: version
-        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-
-      - name: Extract changelog entry
-        id: changelog
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          # Extract the section between the version header and the next version header
-          changelog=$(sed -n "/^## \[$VERSION\]/,/^## \[/p" CHANGELOG.md | head -n -1)
-          # Save to a temp file to handle multiline output
-          echo "$changelog" > /tmp/changelog.txt
-
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          body_path: /tmp/changelog.txt
+          body: |
+            See [CHANGELOG](https://github.com/jetrockets/jet_ui/blob/master/CHANGELOG.md) for details.
           draft: false
           prerelease: false
         env:
