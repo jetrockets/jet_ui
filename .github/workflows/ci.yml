@@ -182,3 +182,30 @@ jobs:
       - name: Run jet_ui:eject card --skip-test --skip-preview
         working-directory: dummy_app
         run: bundle exec rails generate jet_ui:eject card --skip-test --skip-preview
+
+  # ---------------------------------------------------------------------------
+  # Version sync check — ensure package.json and lib/jet_ui/version.rb match
+  # ---------------------------------------------------------------------------
+  version-sync:
+    name: Version sync
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check version consistency
+        run: |
+          RUBY_VERSION=$(grep "VERSION = " lib/jet_ui/version.rb | sed "s/.*VERSION = ['\"]\([^'\"]*\)['\"].*/\1/")
+          NPM_VERSION=$(grep '"version"' package.json | head -1 | sed 's/.*"version": "\([^"]*\)".*/\1/')
+
+          echo "Ruby version: $RUBY_VERSION"
+          echo "NPM version: $NPM_VERSION"
+
+          if [ "$RUBY_VERSION" != "$NPM_VERSION" ]; then
+            echo "❌ Version mismatch!"
+            echo "   lib/jet_ui/version.rb: $RUBY_VERSION"
+            echo "   package.json: $NPM_VERSION"
+            exit 1
+          fi
+
+          echo "✓ Versions match: $RUBY_VERSION"
