@@ -7,17 +7,23 @@ export default class TooltipController extends Controller {
   }
 
   connect() {
-    this._mouseEnter = this.#mouseEnter.bind(this)
-    this._mouseLeave = this.#mouseLeave.bind(this)
-    this.element.addEventListener("mouseenter", this._mouseEnter)
-    this.element.addEventListener("mouseleave", this._mouseLeave)
+    this._show = this.#show.bind(this)
+    this._hide = this.#hide.bind(this)
+    this._handleKeydown = this.#handleKeydown.bind(this)
+    this.element.addEventListener("mouseenter", this._show)
+    this.element.addEventListener("mouseleave", this._hide)
+    this.element.addEventListener("focus", this._show)
+    this.element.addEventListener("blur", this._hide)
+    this.element.addEventListener("keydown", this._handleKeydown)
   }
 
   disconnect() {
-    this.element.removeEventListener("mouseenter", this._mouseEnter)
-    this.element.removeEventListener("mouseleave", this._mouseLeave)
-    this.tooltip?.remove()
-    this.tooltip = null
+    this.element.removeEventListener("mouseenter", this._show)
+    this.element.removeEventListener("mouseleave", this._hide)
+    this.element.removeEventListener("focus", this._show)
+    this.element.removeEventListener("blur", this._hide)
+    this.element.removeEventListener("keydown", this._handleKeydown)
+    this.#hide()
   }
 
   updateContent(event) {
@@ -32,21 +38,29 @@ export default class TooltipController extends Controller {
     }
   }
 
-  #mouseEnter() {
+  #show() {
     this.#createTooltip()
     this.#updatePosition()
   }
 
-  #mouseLeave() {
+  #hide() {
     this.tooltip?.remove()
     this.tooltip = null
+    this.element.removeAttribute("aria-describedby")
+  }
+
+  #handleKeydown(event) {
+    if (event.key === "Escape") this.#hide()
   }
 
   #createTooltip() {
+    this.#hide()
     this.tooltip = document.createElement("div")
     this.tooltip.className = "tooltip"
+    this.tooltip.id = `tooltip-${crypto.randomUUID()}`
     this.tooltip.role = "tooltip"
     this.tooltip.innerHTML = this.contentValue
+    this.element.setAttribute("aria-describedby", this.tooltip.id)
     const container = this.element.closest("dialog") || document.body
     container.appendChild(this.tooltip)
   }

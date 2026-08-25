@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class DropdownController extends Controller {
-  static targets = ["menu", "autofocus"]
+  static targets = ["menu", "autofocus", "trigger"]
   static values = { open: { type: Boolean, default: false } }
 
   connect() {
@@ -11,6 +11,7 @@ export default class DropdownController extends Controller {
     this._handleMorph = this.#handleMorph.bind(this)
     this.element.addEventListener("click", this._handleClick)
     document.addEventListener("turbo:morph", this._handleMorph)
+    this.#hideMenu()
   }
 
   disconnect() {
@@ -37,6 +38,8 @@ export default class DropdownController extends Controller {
   #showMenu() {
     this.menuTarget.classList.remove("hidden")
     this.menuTarget.classList.add("block")
+    this.menuTarget.setAttribute("aria-hidden", "false")
+    this.#setExpanded(true)
     this.#updatePosition()
     if (this.hasAutofocusTarget) this.autofocusTarget.focus()
     document.addEventListener("click", this._clickOutside)
@@ -46,12 +49,17 @@ export default class DropdownController extends Controller {
   #hideMenu() {
     this.menuTarget.classList.remove("block")
     this.menuTarget.classList.add("hidden")
+    this.menuTarget.setAttribute("aria-hidden", "true")
+    this.#setExpanded(false)
     document.removeEventListener("click", this._clickOutside)
     document.removeEventListener("keydown", this._handleKeydown)
   }
 
   #handleKeydown(event) {
-    if (event.key === "Escape") this.hide()
+    if (event.key === "Escape") {
+      this.hide()
+      if (this.hasTriggerTarget) this.triggerTarget.focus()
+    }
   }
 
   #clickOutside(event) {
@@ -60,6 +68,10 @@ export default class DropdownController extends Controller {
 
   #handleMorph() {
     if (this.openValue) this.#showMenu()
+  }
+
+  #setExpanded(isOpen) {
+    if (this.hasTriggerTarget) this.triggerTarget.setAttribute("aria-expanded", isOpen)
   }
 
   #updatePosition() {

@@ -37,7 +37,7 @@ class JetUi::Clipboard::ComponentTest < ViewComponent::TestCase
   def test_has_copy_action
     render_inline(JetUi::Clipboard::Component.new(value: 'text')) { 'Copy' }
 
-    assert_selector '[data-action="click->clipboard#copy"]'
+    assert_selector '[data-action*="click->clipboard#copy"]'
   end
 
   def test_adds_tooltip_controller_when_tooltip_given
@@ -50,5 +50,13 @@ class JetUi::Clipboard::ComponentTest < ViewComponent::TestCase
     render_inline(JetUi::Clipboard::Component.new(value: 'text', class: 'extra')) { 'Copy' }
 
     assert_selector 'span.cursor-pointer.extra'
+  end
+
+  def test_default_trigger_supports_keyboard_copying
+    render_inline(JetUi::Clipboard::Component.new(value: 'text')) { 'Copy' }
+
+    assert_selector 'span[role="button"][tabindex="0"][aria-label="Copy to clipboard"]'
+    assert_selector '[data-action*="keydown.enter->clipboard#copy"]'
+    assert_selector '[data-action*="keydown.space->clipboard#copy"]'
   end
 end

@@ -73,4 +73,10 @@ class JetUi::Modal::ComponentTest < ViewComponent::TestCase
 
     assert_selector 'div.justify-end'
   end
+
+  def test_dialog_has_an_accessible_name_and_modal_state
+    render_inline(JetUi::Modal::Component.new(id: 'my-modal', title: 'Edit profile'))
+
+    assert_selector 'dialog[aria-label="Edit profile"][aria-modal="true"]'
+  end
 end

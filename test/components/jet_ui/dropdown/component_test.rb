@@ -66,4 +66,24 @@ class JetUi::Dropdown::ComponentTest < ViewComponent::TestCase
 
     assert_selector 'div.dropdown.extra'
   end
+
+  def test_trigger_supports_keyboard_activation
+    render_inline(JetUi::Dropdown::TriggerComponent.new) { 'Open' }
+
+    assert_selector 'span[tabindex="0"][aria-haspopup="menu"][aria-expanded="false"]'
+    assert_selector '[data-action*="keydown.enter->dropdown#toggle"]'
+    assert_selector '[data-action*="keydown.space->dropdown#toggle"]'
+  end
+
+  def test_menu_has_menu_role
+    render_inline(JetUi::Dropdown::MenuComponent.new)
+
+    assert_selector 'ul[role="menu"]'
+  end
+
+  def test_link_has_menuitem_role
+    render_inline(JetUi::Dropdown::LinkComponent.new(url: '/path')) { 'Link' }
+
+    assert_selector 'a[role="menuitem"]'
+  end
 end

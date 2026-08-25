@@ -6,18 +6,25 @@ export default class DrawerController extends Controller {
   }
 
   connect() {
-    this.element.addEventListener("click", this.#closeOnBackdropClick.bind(this))
-    this.element.addEventListener("touchstart", this.#onTouchStart.bind(this), { passive: true })
-    this.element.addEventListener("touchmove", this.#onTouchMove.bind(this), { passive: true })
-    this.element.addEventListener("touchend", this.#onTouchEnd.bind(this), { passive: true })
+    this._closeOnBackdropClick = this.#closeOnBackdropClick.bind(this)
+    this._closeOnCancel = this.#closeOnCancel.bind(this)
+    this._onTouchStart = this.#onTouchStart.bind(this)
+    this._onTouchMove = this.#onTouchMove.bind(this)
+    this._onTouchEnd = this.#onTouchEnd.bind(this)
+    this.element.addEventListener("click", this._closeOnBackdropClick)
+    this.element.addEventListener("cancel", this._closeOnCancel)
+    this.element.addEventListener("touchstart", this._onTouchStart, { passive: true })
+    this.element.addEventListener("touchmove", this._onTouchMove, { passive: true })
+    this.element.addEventListener("touchend", this._onTouchEnd, { passive: true })
     this.element.showModal()
   }
 
   disconnect() {
-    this.element.removeEventListener("click", this.#closeOnBackdropClick.bind(this))
-    this.element.removeEventListener("touchstart", this.#onTouchStart.bind(this))
-    this.element.removeEventListener("touchmove", this.#onTouchMove.bind(this))
-    this.element.removeEventListener("touchend", this.#onTouchEnd.bind(this))
+    this.element.removeEventListener("click", this._closeOnBackdropClick)
+    this.element.removeEventListener("cancel", this._closeOnCancel)
+    this.element.removeEventListener("touchstart", this._onTouchStart)
+    this.element.removeEventListener("touchmove", this._onTouchMove)
+    this.element.removeEventListener("touchend", this._onTouchEnd)
     this.close()
   }
 
@@ -37,6 +44,11 @@ export default class DrawerController extends Controller {
     if (event.target === this.element) {
       this.close()
     }
+  }
+
+  #closeOnCancel(event) {
+    event.preventDefault()
+    this.close()
   }
 
   #onTouchStart(event) {

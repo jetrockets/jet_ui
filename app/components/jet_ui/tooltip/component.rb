@@ -14,7 +14,7 @@ module JetUi
         if @as
           helpers.jet_ui.public_send(@as, **attrs) { content }
         else
-          content_tag :span, content, class: 'w-fit', **attrs
+          content_tag :span, content, tabindex: 0, class: 'w-fit', **attrs
         end
       end
 
