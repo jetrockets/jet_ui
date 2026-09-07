@@ -6,6 +6,7 @@
 [![Downloads](https://img.shields.io/gem/dt/jet_ui)](https://rubygems.org/gems/jet_ui)
 [![Ruby](https://img.shields.io/badge/ruby-%3E%3D%203.0-CC342D)](https://rubygems.org/gems/jet_ui)
 [![Rails](https://img.shields.io/badge/rails-%3E%3D%207.0-CC0000)](https://rubygems.org/gems/jet_ui)
+[![Stars](https://img.shields.io/github/stars/jetrockets/jet_ui?style=social)](https://github.com/jetrockets/jet_ui/stargazers)
 
 ViewComponent-based UI library for Rails applications, matching the design system at [ui.jetrockets.com](https://ui.jetrockets.com).
 
