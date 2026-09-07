@@ -16,9 +16,7 @@ module JetUi
       def call
         icon_name = @name.presence || content.to_s.strip
         svg = File.read(ICONS_PATH.join("#{icon_name}.svg"))
-        # rubocop:disable Rails/OutputSafety
-        svg.sub('<svg', "<svg #{html_attributes(icon_name)}").html_safe
-        # rubocop:enable Rails/OutputSafety
+        svg.sub('<svg', "<svg #{html_attributes(icon_name)}").html_safe # rubocop:disable Rails/OutputSafety
       end
 
       private
