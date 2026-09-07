@@ -2,6 +2,7 @@
 /coverage/
 /vendor/bundle/
 Gemfile.lock
+gemfiles/*.lock
 node_modules
 /dist/
 package-lock.json

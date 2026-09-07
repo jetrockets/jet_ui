@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.11] - 2026-09-07
+
+### Fixed
+- Rails 7.x test suite broken by Capybara 3.40+ (`quirks_mode` keyword incompatibility) — pin Capybara to `~> 3.36` and JSON to `< 3.0` in development dependencies
+- Gemspec no longer pins an exact Rails development version — the previous exact pin caused a hard `Bundler::GemfileError` against the CI matrix gemfiles on newer Bundler versions
+- Flash component's Stimulus data attributes now use hyphenated keys for Rails 7.1 compatibility
+
+### Added
+- JetUI logo to README
+
 ## [0.2.10] - 2026-08-22
 
 ### Changed
