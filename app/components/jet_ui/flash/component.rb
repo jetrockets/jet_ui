@@ -34,8 +34,8 @@ module JetUi
       def item_data
         attrs = { controller: 'flash', action: 'turbo:morph@window->flash#connect' }
         if @dismissible
-          attrs[:flash_dismiss_after_value] = DISMISS_AFTER
-          attrs[:flash_show_delay_value]    = SHOW_DELAY
+          attrs[:'flash-dismiss-after-value'] = DISMISS_AFTER
+          attrs[:'flash-show-delay-value']    = SHOW_DELAY
         end
         attrs
       end
