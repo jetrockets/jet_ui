@@ -30,6 +30,13 @@ class JetUi::Dialog::ComponentTest < ViewComponent::TestCase
     assert_selector 'dialog[data-dialog-swipe-value="true"]'
   end
 
+  def test_position_value_serializes_without_symbol_colon
+    render_inline(JetUi::Dialog::Component.new(id: 'my-dialog', position: :left))
+
+    # Regression guard: Stimulus reads this value as a plain string ("left"), not ":left".
+    assert_selector 'dialog[data-dialog-position-value="left"]'
+  end
+
   def test_position_right
     render_inline(JetUi::Dialog::Component.new(id: 'my-dialog', position: :right))
 
