@@ -1,5 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
+// @deprecated JetUi::Drawer::Component's sync-mode markup now targets
+// data-dialogs-target="dialog" (see JetUi::Dialog::Component), not
+// data-drawers-target="dialog" — this controller no longer matches it. Migrate your
+// data-controller="drawers" wrapper and click->drawers#open actions to "dialogs" /
+// click->dialogs#open. Removed in the next major version.
 export default class DrawersController extends Controller {
   static targets = ["dialog"]
   static values = {
