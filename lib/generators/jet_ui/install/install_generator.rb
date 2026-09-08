@@ -146,9 +146,9 @@ module JetUi
         install_npm_package
         say '  Ensure @hotwired/stimulus is installed — it is a peer dependency the controllers import.', :yellow
         say '  Register the controllers you use, in your Stimulus controllers index:'
-        say %(    import { ModalController, DrawerController } from "#{NPM_PACKAGE}")
-        say %(    application.register("modal", ModalController))
-        say %(    application.register("drawer", DrawerController))
+        say %(    import { DialogController, DialogsController } from "#{NPM_PACKAGE}")
+        say %(    application.register("dialog", DialogController))
+        say %(    application.register("dialogs", DialogsController))
         say '  Import the styles, in your Tailwind/CSS entry point:'
         say %(    @import "#{NPM_PACKAGE}/css";)
       end

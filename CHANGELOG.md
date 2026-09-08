@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Dialog` component — unifies `Modal` and `Drawer` into a single component built on the native `<dialog>` element, with five positions (`:center`, `:left`, `:right`, `:top`, `:bottom`) and unlimited nesting of stacked dialogs
+- `Dialogs` mount point component — renders the dialog stack root and the sentinel Turbo Frame that async dialog opens adopt
+
+### Deprecated
+- `Modal` and `Drawer` — now thin shims delegating to `Dialog` with `position: :center`/`:right`; emit an `ActiveSupport::Deprecation` warning and will be removed in the next major version. Existing `data: { turbo_frame: :modal }`/`:drawer` links keep working automatically. See [docs/components/dialog.md](docs/components/dialog.md#migrating-from-modaldrawer) for the full migration path
+
 ## [0.2.11] - 2026-09-07
 
 ### Fixed

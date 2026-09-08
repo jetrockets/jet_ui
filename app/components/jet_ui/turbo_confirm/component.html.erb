@@ -1,20 +1,18 @@
 <dialog id="turbo-confirm" tabindex="-1"
-        class="modal w-2xl animate-slide-up"
+        class="dialog dialog-center w-2xl"
         data-controller="turbo-confirm">
-  <form method="dialog">
-    <div class="modal__header modal__header-bordered">
-      <div>
-        <h3 class="modal__title">Are you absolutely sure?</h3>
-      </div>
-    </div>
+  <div class="dialog__panel">
+    <form method="dialog">
+      <%= helpers.jet_ui.dialog_header(title: 'Are you absolutely sure?', closable: false) %>
 
-    <div class="modal__body">
-      <p>This cannot be undone.</p>
-    </div>
+      <%= helpers.jet_ui.dialog_body do %>
+        <p>This cannot be undone.</p>
+      <% end %>
 
-    <div class="modal__footer modal__footer-bordered flex flex-row gap-2 items-start justify-end">
-      <%= helpers.jet_ui.btn "Cancel", type: :submit, variant: :outline, value: "cancel" %>
-      <%= helpers.jet_ui.btn "Yes, I'm sure", type: :submit, variant: :danger, value: "confirm" %>
-    </div>
-  </form>
+      <%= helpers.jet_ui.dialog_footer justify: :end do %>
+        <%= helpers.jet_ui.btn 'Cancel', type: :submit, variant: :outline, value: 'cancel' %>
+        <%= helpers.jet_ui.btn "Yes, I'm sure", type: :submit, variant: :danger, value: 'confirm' %>
+      <% end %>
+    </form>
+  </div>
 </dialog>

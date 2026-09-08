@@ -13,6 +13,16 @@
     from { opacity: 0.8; transform: translateX(3rem); }
     to   { opacity: 1;   transform: translateX(0); }
   }
+
+  @keyframes slideRight {
+    from { opacity: 0.8; transform: translateX(-3rem); }
+    to   { opacity: 1;   transform: translateX(0); }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0.7; transform: translateY(-2rem); }
+    to   { opacity: 1;   transform: translateY(0); }
+  }
 }
 
 :root {
@@ -33,6 +43,8 @@
   --animate-fade-in: fadeIn 0.15s ease-in-out;
   --animate-slide-up: slideUp 0.3s ease-in-out;
   --animate-slide-left: slideLeft 0.3s ease-in-out;
+  --animate-slide-right: slideRight 0.3s ease-in-out;
+  --animate-slide-down: slideDown 0.3s ease-in-out;
 
   /* Radius */
   --radius-btn-xs: calc(var(--radius-md) * 0.75);

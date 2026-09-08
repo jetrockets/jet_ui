@@ -50,9 +50,10 @@ rails generate jet_ui:install
 Then register the controllers you use (`@hotwired/stimulus` is a peer dependency):
 
 ```javascript
-import { ModalController } from "@jetrockets/jet_ui"
+import { DialogController, DialogsController } from "@jetrockets/jet_ui"
 
-application.register("modal", ModalController)
+application.register("dialog", DialogController)
+application.register("dialogs", DialogsController)
 ```
 
 Import the component styles in your Tailwind/CSS entry point:
@@ -113,8 +114,9 @@ Subcomponents follow the `namespace_subcomponent` naming convention (`card_heade
 | Sidebar | [docs/components/sidebar.md](docs/components/sidebar.md) |
 | Header | [docs/components/header.md](docs/components/header.md) |
 | Navbar | [docs/components/navbar.md](docs/components/navbar.md) |
-| Modal ⚡ | [docs/components/modal.md](docs/components/modal.md) |
-| Drawer ⚡ | [docs/components/drawer.md](docs/components/drawer.md) |
+| Dialog ⚡ | [docs/components/dialog.md](docs/components/dialog.md) |
+| Modal ⚡ (deprecated, use Dialog) | [docs/components/modal.md](docs/components/modal.md) |
+| Drawer ⚡ (deprecated, use Dialog) | [docs/components/drawer.md](docs/components/drawer.md) |
 | Dropdown ⚡ | [docs/components/dropdown.md](docs/components/dropdown.md) |
 | Tooltip ⚡ | [docs/components/tooltip.md](docs/components/tooltip.md) |
 | Popover ⚡ | [docs/components/popover.md](docs/components/popover.md) |
