@@ -82,7 +82,13 @@ export default class DialogsController extends Controller {
     // Deprecated aliases ("modal"/"drawer") point at a frame id that no longer exists in the
     // DOM — only the "dialog" sentinel does. Rewrite the trigger before Turbo reads it (we run
     // first, same capture phase) so its own getElementById(frameName) lookup still finds it.
-    if (frameName !== FRAME_ID) this.#rewriteFrameName(event, trigger)
+    // Persist the resolved position on the trigger too: once data-turbo-frame becomes "dialog"
+    // it no longer carries the alias, so without this a second click on the same trigger would
+    // resolve to the "dialog" default position instead of the alias's preset.
+    if (frameName !== FRAME_ID) {
+      this.#rewriteFrameName(event, trigger)
+      if (trigger && !trigger.dataset.dialogPosition) trigger.dataset.dialogPosition = position
+    }
 
     sentinel.dataset.pending = "true"
 
