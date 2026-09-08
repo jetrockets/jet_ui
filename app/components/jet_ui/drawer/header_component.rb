@@ -2,44 +2,12 @@
 
 module JetUi
   module Drawer
-    class HeaderComponent < JetUi::BaseComponent
-      def initialize(title: nil, subtitle: nil, closable: true, id: nil, bordered: true, **options)
-        @title = title
-        @subtitle = subtitle
-        @closable = closable
-        @id = id
-        @bordered = bordered
-        @options = options
-      end
-
-      erb_template <<~ERB
-        <div class="<%= classes %>">
-          <div>
-            <% if @title %>
-              <h3 class="drawer__title"><%= @title %></h3>
-            <% end %>
-            <% if @subtitle %>
-              <div class="drawer__subtitle"><%= @subtitle %></div>
-            <% end %>
-            <%= content %>
-          </div>
-
-          <% if @closable %>
-            <button type="button" class="drawer__close" data-action="click->drawer#close click->drawers#close" aria-label="Close" data-id="<%= @id %>">
-              <%= helpers.jet_ui.icon("x-mark", size: 6) %>
-            </button>
-          <% end %>
-        </div>
-      ERB
-
-      private
-
-      def classes
-        class_names(
-          'drawer__header',
-          { 'drawer__header-bordered' => @bordered },
-          @options[:class]
-        )
+    # @deprecated Use {JetUi::Dialog::HeaderComponent} instead.
+    class HeaderComponent < JetUi::Dialog::HeaderComponent
+      # `id:` accepted and ignored for signature compatibility with the pre-deprecation API.
+      def initialize(title: nil, subtitle: nil, closable: true, id: nil, bordered: true, # rubocop:disable Lint/UnusedMethodArgument
+                     **options)
+        super(title: title, subtitle: subtitle, closable: closable, bordered: bordered, **options)
       end
     end
   end
