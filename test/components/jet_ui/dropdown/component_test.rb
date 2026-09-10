@@ -86,4 +86,10 @@ class JetUi::Dropdown::ComponentTest < ViewComponent::TestCase
 
     assert_selector 'a[role="menuitem"]'
   end
+
+  def test_button_has_menuitem_role
+    render_inline(JetUi::Dropdown::ButtonComponent.new(href: '/path')) { 'Action' }
+
+    assert_selector 'input[type="submit"][role="menuitem"]'
+  end
 end
