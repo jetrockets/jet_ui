@@ -42,7 +42,11 @@ module JetUi
       end
 
       def dialog_tag(**options, &block)
-        attrs = { tabindex: '-1', class: class_names('drawer', 'animate-slide-left', "w-#{@size}") }
+        attrs = {
+          tabindex: '-1',
+          class: class_names('drawer', 'animate-slide-left', "w-#{@size}"),
+          aria: { label: @title || 'Drawer', modal: true }
+        }
         content_tag :dialog, **attrs, **options, &block
       end
 

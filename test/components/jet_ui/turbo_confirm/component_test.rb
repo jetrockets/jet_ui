@@ -39,4 +39,12 @@ class JetUi::TurboConfirm::ComponentTest < ViewComponent::TestCase
 
     assert_selector 'dialog.modal'
   end
+
+  def test_has_accessible_dialog_metadata
+    render_inline(JetUi::TurboConfirm::Component.new)
+
+    assert_selector 'dialog[aria-modal="true"][aria-labelledby="turbo-confirm-title"][aria-describedby="turbo-confirm-description"]'
+    assert_selector '#turbo-confirm-title'
+    assert_selector '#turbo-confirm-description'
+  end
 end

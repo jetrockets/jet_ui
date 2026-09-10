@@ -3,6 +3,8 @@
 module JetUi
   module Clipboard
     class Component < JetUi::BaseComponent
+      COPY_ACTION = 'click->clipboard#copy keydown.enter->clipboard#copy keydown.space->clipboard#copy'
+
       def initialize(as: nil, value: nil, source_id: nil, success_text: 'Copied!',
                      tooltip: nil, tooltip_success: nil, tooltip_placement: 'top', **options)
         @as = as
@@ -16,14 +18,24 @@ module JetUi
       end
 
       def call
-        if @as
-          helpers.jet_ui.public_send(@as, **attrs) { content }
-        else
-          content_tag :span, content, class: classes, **attrs
-        end
+        return helpers.jet_ui.public_send(@as, **attrs) { content } if @as
+
+        default_trigger
       end
 
       private
+
+      def default_trigger
+        content_tag(
+          :span,
+          content,
+          role: :button,
+          tabindex: 0,
+          aria: { label: 'Copy to clipboard' },
+          class: classes,
+          **attrs
+        )
+      end
 
       def attrs
         @options.except(:class, :data).merge(data: data_attributes)
@@ -33,13 +45,19 @@ module JetUi
         base = {
           controller: @tooltip ? 'clipboard tooltip' : 'clipboard',
           clipboard_success_text_value: @success_text,
-          action: @tooltip ? 'click->clipboard#copy clipboard:change->tooltip#updateContent' : 'click->clipboard#copy'
+          action: actions
         }
 
         base[:clipboard_content_value] = @value if @value
         base[:clipboard_source_id_value] = @source_id if @source_id
         base.merge!(tooltip_attributes) if @tooltip
         base.merge(@options.fetch(:data, {}))
+      end
+
+      def actions
+        return COPY_ACTION unless @tooltip
+
+        "#{COPY_ACTION} clipboard:change->tooltip#updateContent"
       end
 
       def tooltip_attributes

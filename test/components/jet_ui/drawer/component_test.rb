@@ -61,4 +61,10 @@ class JetUi::Drawer::ComponentTest < ViewComponent::TestCase
 
     assert_selector 'div.drawer__footer-bordered'
   end
+
+  def test_dialog_has_an_accessible_name_and_modal_state
+    render_inline(JetUi::Drawer::Component.new(id: 'my-drawer', title: 'Navigation'))
+
+    assert_selector 'dialog[aria-label="Navigation"][aria-modal="true"]'
+  end
 end

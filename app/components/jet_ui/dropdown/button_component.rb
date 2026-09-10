@@ -10,7 +10,7 @@ module JetUi
 
       erb_template <<~ERB
         <li class="dropdown__item">
-          <%= button_to content, @href, **@options.except(:class), class: classes, form: { class: "dropdown__form" } %>
+          <%= button_to content, @href, **@options.except(:class), class: classes, role: 'menuitem', form: { class: "dropdown__form" } %>
         </li>
       ERB
 

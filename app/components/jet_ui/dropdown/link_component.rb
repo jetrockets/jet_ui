@@ -11,7 +11,7 @@ module JetUi
 
       erb_template <<~ERB
         <li class="dropdown__item">
-          <%= link_to content, @url, class: classes, **@options.except(:class) %>
+          <%= link_to content, @url, class: classes, role: 'menuitem', **@options.except(:class) %>
         </li>
       ERB
 

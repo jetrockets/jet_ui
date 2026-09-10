@@ -33,4 +33,10 @@ class JetUi::Tooltip::ComponentTest < ViewComponent::TestCase
 
     assert_selector '[data-tooltip-placement-value="right"]'
   end
+
+  def test_default_trigger_is_keyboard_focusable
+    render_inline(JetUi::Tooltip::Component.new(title: 'Tooltip text')) { 'Hover me' }
+
+    assert_selector 'span.w-fit[tabindex="0"]'
+  end
 end

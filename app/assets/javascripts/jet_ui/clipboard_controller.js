@@ -14,7 +14,8 @@ export default class ClipboardController extends Controller {
       : this.element.textContent
   }
 
-  async copy() {
+  async copy(event) {
+    event?.preventDefault()
     const text = this.#getContent()
     await navigator.clipboard.writeText(text)
 
