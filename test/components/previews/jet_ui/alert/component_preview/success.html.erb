@@ -1,0 +1,4 @@
+<%= render(JetUi::Alert::Component.new(variant: :success)) do %>
+  <%= render(JetUi::Alert::TitleComponent.new) { 'Success' } %>
+  <%= render(JetUi::Alert::DescriptionComponent.new) { 'Your changes have been saved.' } %>
+<% end %>

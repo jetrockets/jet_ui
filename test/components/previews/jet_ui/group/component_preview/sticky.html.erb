@@ -1,0 +1,4 @@
+<%= render(JetUi::Group::Component.new) do %>
+  <%= render(JetUi::Btn::Component.new(variant: :outline)) { 'Cancel' } %>
+  <%= render(JetUi::Btn::Component.new) { 'Save changes' } %>
+<% end %>

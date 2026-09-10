@@ -9,21 +9,11 @@ class JetUi::Alert::ComponentPreview < ViewComponent::Preview
 
   # @label Success
   def success
-    render(JetUi::Alert::Component.new(variant: :success)) do
-      safe_join([
-        render(JetUi::Alert::TitleComponent.new) { 'Success' },
-        render(JetUi::Alert::DescriptionComponent.new) { 'Your changes have been saved.' }
-      ])
-    end
+    render_with_template
   end
 
   # @label Error
   def error
-    render(JetUi::Alert::Component.new(variant: :error)) do
-      safe_join([
-        render(JetUi::Alert::TitleComponent.new) { 'Unable to save changes' },
-        render(JetUi::Alert::DescriptionComponent.new) { 'Check the form and try again.' }
-      ])
-    end
+    render_with_template
   end
 end

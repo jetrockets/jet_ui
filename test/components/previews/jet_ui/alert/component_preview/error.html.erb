@@ -1,0 +1,4 @@
+<%= render(JetUi::Alert::Component.new(variant: :error)) do %>
+  <%= render(JetUi::Alert::TitleComponent.new) { 'Unable to save changes' } %>
+  <%= render(JetUi::Alert::DescriptionComponent.new) { 'Check the form and try again.' } %>
+<% end %>
