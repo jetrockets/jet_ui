@@ -1,0 +1,5 @@
+<%= render(JetUi::Stat::Component.new) do %>
+  <%= render(JetUi::Stat::LabelComponent.new) { 'Total revenue' } %>
+  <%= render(JetUi::Stat::ValueComponent.new) { '$24,780' } %>
+  <%= render(JetUi::Stat::DescriptionComponent.new) { 'This month' } %>
+<% end %>

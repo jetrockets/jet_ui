@@ -1,0 +1,5 @@
+<div class="flex items-center gap-2">
+  <% JetUi::Badge::Component::SIZES.each do |size| %>
+    <%= render(JetUi::Badge::Component.new(size: size)) { size.to_s.upcase } %>
+  <% end %>
+</div>
