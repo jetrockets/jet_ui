@@ -1,0 +1,5 @@
+<%= render(JetUi::Stat::Component.new) do %>
+  <%= render(JetUi::Stat::LabelComponent.new) { 'Conversion rate' } %>
+  <%= render(JetUi::Stat::ValueComponent.new) { '3.2%' } %>
+  <%= render(JetUi::Stat::DescriptionComponent.new(variant: :error)) { '0.8% from last month' } %>
+<% end %>

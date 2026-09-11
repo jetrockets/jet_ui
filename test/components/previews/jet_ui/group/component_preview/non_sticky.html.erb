@@ -1,0 +1,4 @@
+<%= render(JetUi::Group::Component.new(sticky: false)) do %>
+  <%= render(JetUi::Btn::Component.new(variant: :outline)) { 'Back' } %>
+  <%= render(JetUi::Btn::Component.new(variant: :secondary)) { 'Continue' } %>
+<% end %>

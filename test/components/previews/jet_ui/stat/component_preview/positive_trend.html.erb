@@ -1,0 +1,5 @@
+<%= render(JetUi::Stat::Component.new) do %>
+  <%= render(JetUi::Stat::LabelComponent.new) { 'Active users' } %>
+  <%= render(JetUi::Stat::ValueComponent.new) { '2,340' } %>
+  <%= render(JetUi::Stat::DescriptionComponent.new(variant: :success)) { '12% from last month' } %>
+<% end %>
