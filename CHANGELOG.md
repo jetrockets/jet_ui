@@ -7,9 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-09-11
+
 ### Added
 - `Dialog` component — unifies `Modal` and `Drawer` into a single component built on the native `<dialog>` element, with five positions (`:center`, `:left`, `:right`, `:top`, `:bottom`) and unlimited nesting of stacked dialogs
 - `Dialogs` mount point component — renders the dialog stack root and the sentinel Turbo Frame that async dialog opens adopt
+- ViewComponent previews for `Alert`, `Badge`, `Group`, and `Stat`
+- `docs/vite.md` — setup and troubleshooting guide for the Vite/npm install path
+
+### Changed
+- README `Installation` section reorganized with a comparison table so Importmap and Vite get equal visual weight, instead of Vite being a subordinate "Alternative:" section
+- Dropped the `Ruby >=`/`Rails >=` badges from the README — duplicated info already in `## Requirements`, and not a pattern followed by comparable Ruby gems
 
 ### Deprecated
 - `Modal` and `Drawer` — now thin shims delegating to `Dialog` with `position: :center`/`:right`; emit an `ActiveSupport::Deprecation` warning and will be removed in the next major version. Existing `data: { turbo_frame: :modal }`/`:drawer` links keep working automatically. See [docs/components/dialog.md](docs/components/dialog.md#migrating-from-modaldrawer) for the full migration path
