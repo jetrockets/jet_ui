@@ -17,35 +17,41 @@ ViewComponent-based UI library for Rails applications, matching the design syste
 
 ## Installation
 
-Add to your Gemfile:
+Add the gem to your Gemfile, then run the install generator — it detects how your app manages
+JavaScript and wires jet_ui up accordingly, no flags needed:
 
 ```ruby
 gem "jet_ui"
 ```
-
-Run the install generator:
 
 ```bash
 bundle install
 rails generate jet_ui:install
 ```
 
-The generator:
-- Detects your Tailwind CSS source file and injects a single import covering all component stylesheets
-- Registers JetUi Stimulus controllers in your app's controllers index
+|              | Importmap                                                        | Vite                                                                          |
+|--------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| **Detected by**  | `config/importmap.rb` present                                  | a Vite config, or `vite` in `package.json`                                      |
+| **JS wiring**    | Automatic — controllers auto-register                          | Manual — you `import` and `application.register(...)` the ones you use          |
+| **CSS wiring**   | Automatic — injected into your Tailwind source                 | Manual — `@import "@jetrockets/jet_ui/css"` in your CSS entry point             |
+| **npm install**  | None needed — the gem ships the controllers itself              | Done for you by the generator (`yarn add @jetrockets/jet_ui`, or your package manager's equivalent) |
 
-When the gem is updated, both CSS and JS are picked up automatically — no further changes needed. Safe to re-run after upgrades.
+Full walkthrough and troubleshooting for the Vite path: [docs/vite.md](docs/vite.md).
 
-### Alternative: npm package (Vite)
+### Importmap
 
-The above (importmap) setup needs no npm install — the gem ships the controllers itself. If your app bundles JavaScript with Vite instead, run the install generator: it detects Vite, **installs the `@jetrockets/jet_ui` npm package** for you (running `yarn add @jetrockets/jet_ui`, or the npm/pnpm/bun equivalent it detects), and prints the wiring steps:
+The generator detects your Tailwind CSS source file and injects a single import covering all
+component stylesheets, and registers JetUi Stimulus controllers in your app's controllers index.
+When the gem is updated, both CSS and JS are picked up automatically — no further changes needed.
+Safe to re-run after upgrades.
 
-```bash
-rails generate jet_ui:install
-# detects Vite → runs: yarn add @jetrockets/jet_ui
-```
+### Vite
 
-Then register the controllers you use (`@hotwired/stimulus` is a peer dependency):
+The generator detects Vite and installs the `@jetrockets/jet_ui` npm package for you. Vite apps
+own their JS/CSS entry points, so those are not modified automatically — wire up the two pieces
+yourself:
+
+Register the controllers you use (`@hotwired/stimulus` is a peer dependency):
 
 ```javascript
 import { ModalController } from "@jetrockets/jet_ui"
@@ -65,6 +71,8 @@ Or, if you'd rather manage styles through the bundler than the Rails asset pipel
 import "@jetrockets/jet_ui/css"          // all component styles
 import "@jetrockets/jet_ui/css/btn.css"  // a single component
 ```
+
+See [docs/vite.md](docs/vite.md) for detection details and troubleshooting.
 
 ## Usage
 
