@@ -2,20 +2,8 @@
 
 module JetUi
   module Modal
-    class BodyComponent < JetUi::BaseComponent
-      def initialize(**options)
-        @options = options
-      end
-
-      def call
-        content_tag :div, content, class: classes, **@options.except(:class)
-      end
-
-      private
-
-      def classes
-        class_names('modal__body', @options[:class])
-      end
+    # @deprecated Use {JetUi::Dialog::BodyComponent} instead.
+    class BodyComponent < JetUi::Dialog::BodyComponent
     end
   end
 end

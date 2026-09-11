@@ -237,6 +237,25 @@ module JetUi
             { src: 'test/components/previews/jet_ui/navbar/component_preview.rb',                               dest: 'test/components/previews/jet_ui/navbar/component_preview.rb',           type: :preview }
           ]
         },
+        'dialog' => {
+          files: [
+            { src: 'app/components/jet_ui/dialog/component.rb',                                                   dest: 'app/components/jet_ui/dialog/component.rb' },
+            { src: 'app/components/jet_ui/dialog/header_component.rb',                                            dest: 'app/components/jet_ui/dialog/header_component.rb' },
+            { src: 'app/components/jet_ui/dialog/body_component.rb',                                              dest: 'app/components/jet_ui/dialog/body_component.rb' },
+            { src: 'app/components/jet_ui/dialog/footer_component.rb',                                            dest: 'app/components/jet_ui/dialog/footer_component.rb' },
+            { src: 'app/assets/stylesheets/jet_ui/dialog.css',                                                    dest: 'app/assets/stylesheets/jet_ui/dialog.css' },
+            { src: 'app/assets/javascripts/jet_ui/dialog_controller.js',                                          dest: 'app/assets/javascripts/jet_ui/dialog_controller.js',                    type: :javascript },
+            { src: 'app/assets/javascripts/jet_ui/dialogs_controller.js',                                         dest: 'app/assets/javascripts/jet_ui/dialogs_controller.js',                   type: :javascript },
+            { src: 'test/components/jet_ui/dialog/component_test.rb',                                             dest: 'test/components/jet_ui/dialog/component_test.rb',                       type: :test },
+            { src: 'test/components/previews/jet_ui/dialog/component_preview.rb',                                 dest: 'test/components/previews/jet_ui/dialog/component_preview.rb',           type: :preview }
+          ]
+        },
+        'dialogs' => {
+          files: [
+            { src: 'app/components/jet_ui/dialogs/component.rb',                                                  dest: 'app/components/jet_ui/dialogs/component.rb' },
+            { src: 'test/components/jet_ui/dialogs/component_test.rb',                                            dest: 'test/components/jet_ui/dialogs/component_test.rb', type: :test }
+          ]
+        },
         'modal' => {
           files: [
             { src: 'app/components/jet_ui/modal/component.rb',                                                  dest: 'app/components/jet_ui/modal/component.rb' },

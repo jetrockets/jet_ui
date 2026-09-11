@@ -34,9 +34,9 @@ class JetUi::TurboConfirm::ComponentTest < ViewComponent::TestCase
     assert_selector 'button[value="confirm"]'
   end
 
-  def test_has_modal_classes
+  def test_has_dialog_classes
     render_inline(JetUi::TurboConfirm::Component.new)
 
-    assert_selector 'dialog.modal'
+    assert_selector 'dialog.dialog.dialog-center'
   end
 end

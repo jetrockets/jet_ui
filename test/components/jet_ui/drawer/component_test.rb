@@ -3,62 +3,51 @@
 require 'test_helper'
 
 class JetUi::Drawer::ComponentTest < ViewComponent::TestCase
-  def test_renders_sync_dialog_with_id
-    render_inline(JetUi::Drawer::Component.new(id: 'my-drawer'))
+  include ActiveSupport::Testing::Deprecation
 
-    assert_selector 'dialog#my-drawer'
-    assert_selector 'dialog[data-drawers-target="dialog"]'
+  def test_emits_deprecation_warning
+    assert_deprecated(/JetUi::Drawer::Component is deprecated/, JetUi::Drawer::Component.deprecator) do
+      render_inline(JetUi::Drawer::Component.new(id: 'my-drawer'))
+    end
   end
 
-  def test_renders_div_without_id_outside_turbo_frame
-    render_inline(JetUi::Drawer::Component.new)
+  def test_renders_as_a_right_positioned_dialog
+    render_inline_without_deprecation { JetUi::Drawer::Component.new(id: 'my-drawer') }
 
-    assert_selector 'div.bg-background'
+    assert_selector 'dialog#my-drawer.dialog-right'
+    assert_selector 'dialog[data-dialogs-target="dialog"]'
+  end
+
+  def test_renders_page_variant_without_id_outside_turbo_frame
+    render_inline_without_deprecation { JetUi::Drawer::Component.new }
+
+    assert_selector 'div.dialog-page'
     assert_no_selector 'dialog'
   end
 
   def test_header_renders_title
     render_inline(JetUi::Drawer::HeaderComponent.new(title: 'My Drawer'))
 
-    assert_selector 'h3.drawer__title'
+    assert_selector 'h3.dialog__title'
     assert_text 'My Drawer'
   end
 
-  def test_header_renders_subtitle
-    render_inline(JetUi::Drawer::HeaderComponent.new(subtitle: 'Info'))
-
-    assert_selector 'div.drawer__subtitle'
-    assert_text 'Info'
-  end
-
-  def test_closable_header_has_close_button
-    render_inline(JetUi::Drawer::HeaderComponent.new(closable: true))
-
-    assert_selector 'button.drawer__close'
-  end
-
-  def test_non_closable_header_omits_close_button
-    render_inline(JetUi::Drawer::HeaderComponent.new(closable: false))
-
-    assert_no_selector 'button.drawer__close'
-  end
-
   def test_body_renders_div
-    render_inline(JetUi::Drawer::BodyComponent.new) { 'Body' }
+    render_inline(JetUi::Drawer::BodyComponent.new) { 'Body content' }
 
-    assert_selector 'div.drawer__body'
-    assert_text 'Body'
+    assert_selector 'div.dialog__body'
+    assert_text 'Body content'
   end
 
   def test_footer_renders_div
     render_inline(JetUi::Drawer::FooterComponent.new) { 'Footer' }
 
-    assert_selector 'div.drawer__footer'
+    assert_selector 'div.dialog__footer'
   end
 
-  def test_footer_bordered_by_default
-    render_inline(JetUi::Drawer::FooterComponent.new) { 'Footer' }
+  private
 
-    assert_selector 'div.drawer__footer-bordered'
+  def render_inline_without_deprecation(&block)
+    JetUi::Drawer::Component.deprecator.silence { render_inline(block.call) }
   end
 end

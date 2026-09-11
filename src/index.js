@@ -1,4 +1,6 @@
 import ClipboardController from '../app/assets/javascripts/jet_ui/clipboard_controller.js'
+import DialogController from '../app/assets/javascripts/jet_ui/dialog_controller.js'
+import DialogsController from '../app/assets/javascripts/jet_ui/dialogs_controller.js'
 import DrawerController from '../app/assets/javascripts/jet_ui/drawer_controller.js'
 import DrawersController from '../app/assets/javascripts/jet_ui/drawers_controller.js'
 import DropdownController from '../app/assets/javascripts/jet_ui/dropdown_controller.js'
@@ -11,6 +13,8 @@ import TurboConfirmController from '../app/assets/javascripts/jet_ui/turbo_confi
 
 export {
   ClipboardController,
+  DialogController,
+  DialogsController,
   DrawerController,
   DrawersController,
   DropdownController,
