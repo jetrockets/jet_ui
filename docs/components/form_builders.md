@@ -59,3 +59,22 @@ Autogrows as content changes, including on window resize (the resize check is de
 `select_options` maps to Rails' own select options (`include_blank`, `prompt`, `selected`, and so on) — kept separate from the field's own options (`size`, `error`, `class`, etc.) since Rails' `select` takes two different hashes.
 
 Note: if the field ends up `required` (explicitly or via a presence validator) and no `include_blank`/`prompt` is given, Rails automatically adds a blank first option — that's native Rails behavior, not something jet_ui adds.
+
+### Choices
+
+`JetUi::Fields::ChoicesComponent`. A searchable, taggable select, built on [choices.js](https://github.com/Choices-js/Choices) — jet_ui's first external JS dependency (`choices.js`, added as a real npm dependency; every other controller in the gem is hand-written, but reimplementing a widget this size wasn't worth it).
+
+```erb
+<%= f.choices :country, ["US", "CA", "MX"] %>
+<%= f.choices :tags, Tag.pluck(:name, :id), select_options: {}, multiple: true %>
+```
+
+Remote search and inline "add new" both work through data attributes read by the controller:
+
+```erb
+<%= f.choices :country, [], data: { search: search_countries_path, new: new_country_path } %>
+```
+
+The "add new" link opens through jet_ui's `Dialog` frame (`data-turbo-frame="dialog"`).
+
+**Rails+importmap setup note:** `choices.js` needs to be pinned in the consuming app's importmap (or bundled via Vite/npm) — `jet_ui:install` doesn't do this automatically yet (tracked in #43).
