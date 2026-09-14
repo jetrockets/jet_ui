@@ -46,3 +46,16 @@ Every field shares these, inherited from `JetUi::Fields::BaseComponent`:
 Autogrows as content changes, including on window resize (the resize check is debounced 100ms by default, tunable via `data: { textarea_autogrow_resize_debounce_delay_value: 200 }`, or disabled entirely by setting it to `0`).
 
 **Migrating from `ui.jetrockets.com`:** that version depends on the third-party `stimulus-textarea-autogrow` package. jet_ui has no external JS dependencies (every other controller in the gem is hand-written), so this is a small built-in controller instead of adding the first one. Behavior matches, including the resize recalculation.
+
+### Select
+
+`JetUi::Fields::SelectComponent`. Wraps Rails' native `select` helper.
+
+```erb
+<%= f.select :country, ["US", "CA", "MX"] %>
+<%= f.select :country, ["US", "CA"], select_options: { include_blank: "Choose one" } %>
+```
+
+`select_options` maps to Rails' own select options (`include_blank`, `prompt`, `selected`, and so on) — kept separate from the field's own options (`size`, `error`, `class`, etc.) since Rails' `select` takes two different hashes.
+
+Note: if the field ends up `required` (explicitly or via a presence validator) and no `include_blank`/`prompt` is given, Rails automatically adds a blank first option — that's native Rails behavior, not something jet_ui adds.
