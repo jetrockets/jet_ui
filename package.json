@@ -27,6 +27,9 @@
   "peerDependencies": {
     "@hotwired/stimulus": "^3.0"
   },
+  "dependencies": {
+    "choices.js": "^11.1.0"
+  },
   "devDependencies": {
     "vite": "^6.0.0"
   },

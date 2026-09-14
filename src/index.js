@@ -1,3 +1,4 @@
+import ChoicesController from '../app/assets/javascripts/jet_ui/choices_controller.js'
 import ClipboardController from '../app/assets/javascripts/jet_ui/clipboard_controller.js'
 import DialogController from '../app/assets/javascripts/jet_ui/dialog_controller.js'
 import DialogsController from '../app/assets/javascripts/jet_ui/dialogs_controller.js'
@@ -13,6 +14,7 @@ import TooltipController from '../app/assets/javascripts/jet_ui/tooltip_controll
 import TurboConfirmController from '../app/assets/javascripts/jet_ui/turbo_confirm_controller.js'
 
 export {
+  ChoicesController,
   ClipboardController,
   DialogController,
   DialogsController,
