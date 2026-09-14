@@ -113,6 +113,14 @@ class JetUi::Fields::ChoicesComponentTest < ViewComponent::TestCase
     assert_selector "select[data-new*='container=fake_country_container']"
   end
 
+  def test_passes_through_arbitrary_html_options
+    render_inline(
+      JetUi::Fields::ChoicesComponent.new(form: build_form, method: :country, choices: %w[US], multiple: true)
+    )
+
+    assert_selector 'select[multiple]'
+  end
+
   def test_preserves_other_data_attributes
     render_inline(
       JetUi::Fields::ChoicesComponent.new(form: build_form, method: :country, choices: %w[US], data: { search: '/countries/search' })
