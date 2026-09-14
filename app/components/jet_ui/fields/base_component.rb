@@ -68,6 +68,16 @@ module JetUi
           options[:class]
         )
       end
+
+      # Calls the given method as originally defined on
+      # ActionView::Helpers::FormBuilder, bypassing any override a custom
+      # form builder subclass (like JetUi::CoreFormBuilder) puts on top of
+      # it. Every field needs this: without it, a field rendered from
+      # inside the custom builder's own overridden method would recurse
+      # into itself instead of reaching Rails' native tag.
+      def render_native_field(helper_name, field_options = options)
+        ActionView::Helpers::FormBuilder.instance_method(helper_name).bind(form).call(method_name, field_options)
+      end
     end
   end
 end
