@@ -95,6 +95,14 @@ class JetUi::Fields::SelectComponentTest < ViewComponent::TestCase
     refute_selector 'select[required]'
   end
 
+  def test_passes_through_arbitrary_html_options
+    render_inline(
+      JetUi::Fields::SelectComponent.new(form: build_form, method: :role, choices: %w[Admin], multiple: true)
+    )
+
+    assert_selector 'select[multiple]'
+  end
+
   def test_applies_errored_class_with_model_errors
     model = FakeModel.new
     model.valid?
