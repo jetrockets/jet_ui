@@ -74,9 +74,13 @@ module JetUi
       # form builder subclass (like JetUi::CoreFormBuilder) puts on top of
       # it. Every field needs this: without it, a field rendered from
       # inside the custom builder's own overridden method would recurse
-      # into itself instead of reaching Rails' native tag.
-      def render_native_field(helper_name, field_options = options)
-        ActionView::Helpers::FormBuilder.instance_method(helper_name).bind(form).call(method_name, field_options)
+      # into itself instead of reaching Rails' native tag. Extra args
+      # after the field's own method name are forwarded as-is, so this
+      # works for both a two-arg helper like text_field(method, options)
+      # and a four-arg one like select(method, choices, options, html_options).
+      def render_native_field(helper_name, *args)
+        args = [options] if args.empty?
+        ActionView::Helpers::FormBuilder.instance_method(helper_name).bind(form).call(method_name, *args)
       end
     end
   end
