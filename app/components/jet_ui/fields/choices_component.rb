@@ -17,18 +17,14 @@ module JetUi
 
       def call
         content_tag(:div, id: container_id, class: choices_wrapper_classes, data: { controller: 'choices' }) do
-          render_native_field(:select, @choices, native_select_options, native_html_options)
+          render_native_field(:select, @choices, @select_options, native_html_options)
         end
       end
 
       private
 
-      def native_select_options
-        @select_options.merge(required: required?)
-      end
-
       def native_html_options
-        options.merge(class: field_classes, data: choices_data_options)
+        options.merge(class: field_classes, required: required?, data: choices_data_options)
       end
 
       def choices_data_options
