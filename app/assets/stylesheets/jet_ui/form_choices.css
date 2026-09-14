@@ -1,0 +1,289 @@
+/*
+ * Skins choices.js (https://github.com/Choices-js/Choices) with jet_ui's
+ * own tokens. `.choices*` class names below come from the library itself,
+ * not from jet_ui — don't rename them. Icon references are inlined as SVG
+ * data URIs (same technique as pagy.css) instead of pointing at a static
+ * asset path, so this works the same way for Rails asset pipeline and
+ * npm/Vite consumers alike.
+ */
+:root {
+  --choices-font-size-lg: 16px;
+  --choices-font-size-md: 14px;
+  --choices-font-size-sm: 12px;
+  --choices-border-radius: var(--radius-field);
+  --choices-border-radius-item: var(--radius-btn-md);
+
+  --choices-bg-color: var(--color-card);
+  --choices-bg-color-dropdown: var(--color-card);
+
+  --choices-text-color: var(--color-foreground);
+  --choices-keyline-color: var(--color-input);
+  --choices-primary-color: var(--color-muted);
+  --choices-highlight-color: var(--color-muted);
+  --choices-hover-color: var(--color-foreground);
+
+  --choices-button-dimension: 14px;
+  --choices-button-offset: 8px;
+  --choices-icon-cross: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 18L18 6M6 6L18 18' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --choices-icon-chevron: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.5 8.25L12 15.75L4.5 8.25' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+  --choices-z-index: 1;
+
+  --choices-input-height: 40px;
+  --choices-width: 100%;
+  --choices-base-border: 1px solid var(--choices-keyline-color);
+  --choices-border-color-focus: var(--color-input-focus);
+  --choices-ring-shadow-focus: 0 0 0 3px var(--color-ring);
+
+  --choices-multiple-item-padding: 4px 10px;
+  --choices-dropdown-item-padding: 10px;
+  --choices-item-margin-horizontal: 4px;
+  --choices-input-padding: 1.5px 0 0 0;
+  --choices-list-single-padding: 0;
+  --choices-multi-padding: 5px 12px;
+  --choices-inner-padding: 7px 12px;
+
+  --choices-arrow-size: 5px;
+  --choices-arrow-right: 0;
+
+  --choices-button-opacity: 0.7;
+  --choices-button-opacity-hover: 1;
+  --choices-placeholder-opacity: 0.6;
+}
+
+.choices {
+  cursor: pointer;
+  font-size: var(--choices-font-size-lg);
+  position: relative;
+}
+
+/* Fix for required attribute */
+.choices select.choices__input[required] {
+  opacity: 0;
+  outline: none;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.choices[data-type*="select-one"] .choices__input {
+  border-bottom: var(--choices-base-border);
+  padding: var(--choices-dropdown-item-padding);
+  width: var(--choices-width);
+}
+
+.choices[data-type*="select-one"] .choices__button {
+  display: none;
+}
+
+.choices::after {
+  content: "";
+  width: 40px;
+  height: 100%;
+  position: absolute;
+  right: var(--choices-arrow-right);
+  background-color: var(--color-muted-foreground);
+  mask-image: var(--choices-icon-chevron);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 16px;
+}
+
+.choices.is-open::after {
+  border-color: transparent transparent var(--choices-text-color);
+}
+
+.choices[data-type*="select-multiple"] .choices__inner,
+.choices[data-type*="text"] .choices__inner {
+  padding: var(--choices-multi-padding);
+}
+
+.choices[data-type*="select-multiple"] .choices__button,
+.choices[data-type*="text"] .choices__button {
+  background-color: currentColor;
+  mask-image: var(--choices-icon-cross);
+  mask-size: var(--choices-button-dimension);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  opacity: var(--choices-button-opacity);
+  padding-left: calc(var(--choices-button-offset) * 2);
+  position: relative;
+  top: 2px;
+  width: var(--choices-button-dimension);
+  height: var(--choices-button-dimension);
+}
+
+.choices[data-type*="select-multiple"] .choices__button:hover,
+.choices[data-type*="text"] .choices__button:hover {
+  opacity: var(--choices-button-opacity-hover);
+}
+
+.choices__button {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  margin-left: var(--choices-item-margin-horizontal);
+  text-indent: -9999px;
+}
+
+.choices__inner {
+  background-color: var(--choices-bg-color);
+  border: var(--choices-base-border);
+  border-radius: var(--choices-border-radius);
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--choices-font-size-lg);
+  min-height: var(--choices-input-height);
+  overflow: hidden;
+  color: var(--choices-text-color);
+  padding: var(--choices-inner-padding);
+  vertical-align: top;
+  width: var(--choices-width);
+}
+
+.is-focused {
+  outline: none;
+}
+
+.is-focused .choices__inner,
+.is-open .choices__inner {
+  border-color: var(--choices-border-color-focus);
+  box-shadow: var(--choices-ring-shadow-focus);
+}
+
+.is-open .choices__inner {
+  border-radius: var(--radius-dropdown) var(--radius-dropdown) 0 0;
+}
+
+.choices__list[aria-expanded] {
+  visibility: hidden;
+  background-color: var(--choices-bg-color-dropdown);
+  border: var(--choices-base-border);
+  border-bottom-left-radius: var(--radius-dropdown);
+  border-bottom-right-radius: var(--radius-dropdown);
+  margin-top: -1px;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  width: var(--choices-width);
+  z-index: var(--choices-z-index);
+}
+
+.choices__list--single {
+  display: inline-block;
+  padding: var(--choices-list-single-padding);
+}
+
+.choices__list--multiple {
+  display: inline;
+}
+
+.choices__item {
+  font-size: var(--choices-font-size-md);
+}
+
+.choices__list--multiple .choices__item {
+  background-color: var(--choices-primary-color);
+  border-radius: var(--choices-border-radius-item);
+  color: var(--choices-hover-color);
+  display: inline-block;
+  font-size: var(--choices-font-size-sm);
+  font-weight: 500;
+  margin-right: var(--choices-item-margin-horizontal);
+  padding: var(--choices-multiple-item-padding);
+}
+
+.choices__item--selectable {
+  cursor: pointer;
+}
+
+.choices__input {
+  background-color: var(--choices-bg-color);
+  border: 0;
+  box-shadow: none;
+  font-size: var(--choices-font-size-lg);
+  max-width: var(--choices-width);
+  padding: var(--choices-input-padding);
+}
+
+.choices__list--dropdown,
+.choices__list[aria-expanded] {
+  overflow: auto;
+  max-height: 320px;
+
+  background-color: var(--choices-bg-color-dropdown);
+  border: var(--choices-base-border);
+  border-bottom-left-radius: var(--radius-dropdown);
+  border-bottom-right-radius: var(--radius-dropdown);
+
+  position: absolute;
+  visibility: hidden;
+  width: var(--choices-width);
+  z-index: var(--choices-z-index);
+
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.is-active.choices__list--dropdown,
+.is-active.choices__list[aria-expanded] {
+  visibility: visible;
+}
+
+.choices__list--dropdown .choices__item,
+.choices__list[aria-expanded] .choices__item {
+  font-size: var(--choices-font-size-md);
+  padding: var(--choices-dropdown-item-padding);
+  position: relative;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted,
+.choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+  background-color: var(--choices-highlight-color);
+  color: var(--choices-hover-color);
+}
+
+.choices__placeholder {
+  opacity: var(--choices-placeholder-opacity);
+}
+
+.choices__item-description {
+  font-size: 0.875rem;
+  color: var(--color-foreground);
+}
+
+.choices__item-new {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.choices__item-new:hover {
+  background-color: var(--color-accent);
+}
+
+.choices.is-disabled .choices__inner,
+.choices.is-disabled .choices__input {
+  cursor: not-allowed;
+  user-select: none;
+  color: var(--color-muted-foreground);
+  background-color: var(--color-muted);
+}
+
+.form-choices-lg {
+  --choices-input-height: 3rem;
+  --choices-font-size-md: 16px;
+}
+
+.form-choices-sm {
+  --choices-input-height: 2.25rem;
+  --choices-font-size-md: 12px;
+}
+
+.form-choices-errored {
+  --choices-ring-shadow-focus: 0 0 0 3px var(--color-destructive-border);
+  --choices-bg-color: var(--color-destructive-soft);
+  --choices-base-border: 1px solid var(--color-destructive);
+  --choices-border-color-focus: var(--color-destructive);
+  --choices-text-color: var(--color-destructive-soft-foreground);
+}

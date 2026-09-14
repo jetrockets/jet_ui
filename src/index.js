@@ -1,3 +1,4 @@
+import ChoicesController from '../app/assets/javascripts/jet_ui/choices_controller.js'
 import ClipboardController from '../app/assets/javascripts/jet_ui/clipboard_controller.js'
 import DialogController from '../app/assets/javascripts/jet_ui/dialog_controller.js'
 import DialogsController from '../app/assets/javascripts/jet_ui/dialogs_controller.js'
@@ -8,10 +9,12 @@ import FlashController from '../app/assets/javascripts/jet_ui/flash_controller.j
 import ModalController from '../app/assets/javascripts/jet_ui/modal_controller.js'
 import ModalsController from '../app/assets/javascripts/jet_ui/modals_controller.js'
 import PopoverController from '../app/assets/javascripts/jet_ui/popover_controller.js'
+import TextareaAutogrowController from '../app/assets/javascripts/jet_ui/textarea_autogrow_controller.js'
 import TooltipController from '../app/assets/javascripts/jet_ui/tooltip_controller.js'
 import TurboConfirmController from '../app/assets/javascripts/jet_ui/turbo_confirm_controller.js'
 
 export {
+  ChoicesController,
   ClipboardController,
   DialogController,
   DialogsController,
@@ -22,6 +25,7 @@ export {
   ModalController,
   ModalsController,
   PopoverController,
+  TextareaAutogrowController,
   TooltipController,
   TurboConfirmController
 }
