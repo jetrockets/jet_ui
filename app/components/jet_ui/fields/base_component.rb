@@ -52,7 +52,8 @@ module JetUi
           additional_classes,
           { 'form-field-sm': size == :sm },
           { 'form-field-lg': size == :lg },
-          { 'form-field-errored': errors? }
+          { 'form-field-errored': errors? },
+          options[:class]
         )
       end
 
@@ -60,9 +61,11 @@ module JetUi
         class_names(
           'form-label',
           additional_classes,
+          { 'form-label-disabled': options[:disabled] },
           { 'form-label-sm': size == :sm },
           { 'form-label-lg': size == :lg },
-          { 'form-label-errored': errors? }
+          { 'form-label-errored': errors? },
+          options[:class]
         )
       end
     end

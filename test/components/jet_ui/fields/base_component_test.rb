@@ -21,7 +21,10 @@ class JetUi::Fields::BaseComponentTest < ViewComponent::TestCase
 
   class ProbeComponent < JetUi::Fields::BaseComponent
     def call
-      content_tag(:div, nil, class: field_classes, data: { required: required?, errors: errors? })
+      safe_join([
+                  content_tag(:div, nil, class: field_classes, data: { required: required?, errors: errors? }),
+                  content_tag(:label, nil, class: label_classes)
+                ])
     end
   end
 
@@ -62,6 +65,33 @@ class JetUi::Fields::BaseComponentTest < ViewComponent::TestCase
 
     refute_selector 'div.form-field-sm'
     refute_selector 'div.form-field-lg'
+  end
+
+  # ---------------------------------------------------------------------------
+  # Custom class and disabled state
+  # ---------------------------------------------------------------------------
+  def test_field_classes_merges_custom_class_from_options
+    render_inline(ProbeComponent.new(form: build_form, method: :name, class: 'my-custom-field'))
+
+    assert_selector 'div.form-field.my-custom-field'
+  end
+
+  def test_label_classes_merges_custom_class_from_options
+    render_inline(ProbeComponent.new(form: build_form, method: :name, class: 'my-custom-field'))
+
+    assert_selector 'label.form-label.my-custom-field'
+  end
+
+  def test_label_disabled_class_absent_by_default
+    render_inline(ProbeComponent.new(form: build_form, method: :name))
+
+    refute_selector 'label.form-label-disabled'
+  end
+
+  def test_label_disabled_class_present_when_disabled_option_set
+    render_inline(ProbeComponent.new(form: build_form, method: :name, disabled: true))
+
+    assert_selector 'label.form-label-disabled'
   end
 
   # ---------------------------------------------------------------------------
@@ -109,5 +139,14 @@ class JetUi::Fields::BaseComponentTest < ViewComponent::TestCase
     render_inline(ProbeComponent.new(form: build_form, method: :name, error: 'Something went wrong'))
 
     assert_selector 'div.form-field-errored'
+  end
+
+  def test_label_errored_class_present_with_model_errors
+    model = FakeModel.new
+    model.valid?
+
+    render_inline(ProbeComponent.new(form: build_form(model), method: :name))
+
+    assert_selector 'label.form-label-errored'
   end
 end
