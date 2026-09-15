@@ -15,6 +15,13 @@ class JetUi::TurboConfirm::ComponentTest < ViewComponent::TestCase
     assert_selector 'dialog[data-controller="turbo-confirm"]'
   end
 
+  def test_dialog_is_labelled_and_modal
+    render_inline(JetUi::TurboConfirm::Component.new)
+
+    assert_selector 'dialog[role="dialog"][aria-modal="true"][aria-labelledby="turbo-confirm-title"]'
+    assert_selector 'h3.dialog__title#turbo-confirm-title'
+  end
+
   def test_has_form_with_dialog_method
     render_inline(JetUi::TurboConfirm::Component.new)
 

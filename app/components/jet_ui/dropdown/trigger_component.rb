@@ -8,13 +8,16 @@ module JetUi
         @options = options
         @options[:data] ||= {}
         @options[:data][:dropdown_target] = 'trigger'
+        @options[:data][:action] = [@options[:data][:action], 'keydown->dropdown#triggerKeydown']
+                                   .compact.join(' ')
+        @options[:aria] = { haspopup: 'menu', expanded: false }.merge(@options.fetch(:aria, {}))
       end
 
       def call
         if @as
           helpers.jet_ui.public_send(@as, **@options) { content }
         else
-          content_tag :span, content, role: :button, class: classes, **@options.except(:class)
+          content_tag :span, content, role: :button, tabindex: 0, class: classes, **@options.except(:class)
         end
       end
 

@@ -40,3 +40,12 @@ The `tooltip` Stimulus controller creates a tooltip element on `mouseenter` and 
 |-----------|------------------------------------|
 | `content` | The tooltip text to display.       |
 | `placement`| Preferred position for the tooltip.|
+
+## Accessibility
+
+- The generated tooltip element carries `role="tooltip"` and a unique `id`; while it is visible
+  the trigger references it via `aria-describedby`, so assistive tech announces it as the
+  trigger's description.
+- The plain-span variant is given `tabindex="0"` so it can be reached by keyboard.
+- **Keyboard:** the tooltip appears on focus (not just hover) and is dismissed on blur or when
+  `Escape` is pressed.

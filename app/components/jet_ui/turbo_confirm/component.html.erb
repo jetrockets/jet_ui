@@ -1,9 +1,10 @@
 <dialog id="turbo-confirm" tabindex="-1"
+        role="dialog" aria-modal="true" aria-labelledby="turbo-confirm-title"
         class="dialog dialog-center w-2xl"
         data-controller="turbo-confirm">
   <div class="dialog__panel">
     <form method="dialog">
-      <%= helpers.jet_ui.dialog_header(title: 'Are you absolutely sure?', closable: false) %>
+      <%= helpers.jet_ui.dialog_header(title: 'Are you absolutely sure?', closable: false, title_id: 'turbo-confirm-title') %>
 
       <%= helpers.jet_ui.dialog_body do %>
         <p>This cannot be undone.</p>

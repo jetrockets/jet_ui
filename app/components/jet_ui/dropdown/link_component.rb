@@ -10,8 +10,10 @@ module JetUi
       end
 
       erb_template <<~ERB
-        <li class="dropdown__item">
-          <%= link_to content, @url, class: classes, **@options.except(:class) %>
+        <li class="dropdown__item" role="none">
+          <%= link_to content, @url, class: classes, role: 'menuitem',
+                      data: { dropdown_target: 'item' }.merge(@options.fetch(:data, {})),
+                      **@options.except(:class, :data) %>
         </li>
       ERB
 

@@ -14,7 +14,9 @@ module JetUi
         if @as
           helpers.jet_ui.public_send(@as, **attrs) { content }
         else
-          content_tag :span, content, class: 'w-fit', **attrs
+          # tabindex makes the plain-span trigger reachable by keyboard so the tooltip can be
+          # revealed on focus, not just on hover.
+          content_tag :span, content, class: 'w-fit', tabindex: 0, **attrs
         end
       end
 

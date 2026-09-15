@@ -10,6 +10,24 @@ class JetUi::Dialog::ComponentTest < ViewComponent::TestCase
     assert_selector 'dialog[data-dialogs-target="dialog"]'
   end
 
+  def test_dialog_has_role_and_aria_modal
+    render_inline(JetUi::Dialog::Component.new(id: 'my-dialog'))
+
+    assert_selector 'dialog[role="dialog"][aria-modal="true"]'
+  end
+
+  def test_header_title_gets_id_when_provided
+    render_inline(JetUi::Dialog::HeaderComponent.new(title: 'My Dialog', title_id: 'dlg-title'))
+
+    assert_selector 'h3.dialog__title#dlg-title'
+  end
+
+  def test_header_title_has_no_id_by_default
+    render_inline(JetUi::Dialog::HeaderComponent.new(title: 'My Dialog'))
+
+    assert_no_selector 'h3.dialog__title[id]'
+  end
+
   def test_renders_div_without_id_outside_turbo_frame
     render_inline(JetUi::Dialog::Component.new)
 
