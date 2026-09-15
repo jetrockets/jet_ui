@@ -16,6 +16,12 @@ class JetUi::Tooltip::ComponentTest < ViewComponent::TestCase
     assert_selector '[data-controller="tooltip"]'
   end
 
+  def test_span_variant_is_keyboard_focusable
+    render_inline(JetUi::Tooltip::Component.new(title: 'Tooltip text')) { 'Hover me' }
+
+    assert_selector 'span[tabindex="0"]'
+  end
+
   def test_sets_content_value
     render_inline(JetUi::Tooltip::Component.new(title: 'My tip')) { 'Hover me' }
 

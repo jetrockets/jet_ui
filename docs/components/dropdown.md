@@ -82,3 +82,14 @@ Horizontal rule separator. No parameters.
 | `.dropdown__item`   | Individual menu item              |
 | `.dropdown__title`  | Section label                     |
 | `.dropdown__divider`| Separator rule                    |
+
+## Accessibility
+
+- The trigger exposes `role="button"`, `aria-haspopup="menu"` and `aria-expanded`, which the
+  `dropdown` controller keeps in sync as the menu opens and closes.
+- The menu is a `role="menu"` list; links and buttons inside it are `role="menuitem"` and
+  dividers are `role="separator"`.
+- **Keyboard:** the trigger is focusable (`Tab`). `Enter`/`Space` toggle the menu, `ArrowDown`/
+  `ArrowUp` open it and move focus between items (with wrap-around), `Home`/`End` jump to the
+  first/last item, and `Escape` closes the menu and returns focus to the trigger. `Tab` also
+  closes the menu.

@@ -9,7 +9,7 @@ module JetUi
 
       erb_template <<~ERB
         <div class="dropdown__menu" data-dropdown-target="menu">
-          <ul class="<%= classes %>">
+          <ul class="<%= classes %>" role="menu">
             <%= content %>
           </ul>
         </div>

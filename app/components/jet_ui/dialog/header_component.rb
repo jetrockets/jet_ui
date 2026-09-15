@@ -3,11 +3,12 @@
 module JetUi
   module Dialog
     class HeaderComponent < JetUi::BaseComponent
-      def initialize(title: nil, subtitle: nil, closable: true, bordered: true, **options)
+      def initialize(title: nil, subtitle: nil, closable: true, bordered: true, title_id: nil, **options)
         @title    = title
         @subtitle = subtitle
         @closable = closable
         @bordered = bordered
+        @title_id = title_id
         @options  = options
       end
 
@@ -15,7 +16,7 @@ module JetUi
         <div class="<%= classes %>">
           <div>
             <% if @title %>
-              <h3 class="dialog__title"><%= @title %></h3>
+              <%= tag.h3 @title, class: 'dialog__title', id: @title_id %>
             <% end %>
             <% if @subtitle %>
               <div class="dialog__subtitle"><%= @subtitle %></div>

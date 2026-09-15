@@ -43,3 +43,12 @@ Requires Stimulus. Run `rails generate jet_ui:install` once to register the cont
 ## Stimulus controller
 
 The `clipboard` Stimulus controller handles the copy action and success feedback. When a `tooltip` is provided, it co-operates with the `tooltip` controller via a `clipboard:change` event.
+
+## Accessibility
+
+- The plain-span variant renders as a keyboard-operable button: `role="button"`, `tabindex="0"`
+  and an `aria-label` (customisable via `aria_label:`, default `"Copy to clipboard"`).
+- **Keyboard:** `Enter`/`Space` trigger the copy (handled by the controller's `copyOnKeydown`
+  action).
+- On a successful copy the controller announces the success text through an off-screen
+  `aria-live="polite"` region, so screen-reader users get feedback even when no tooltip is used.

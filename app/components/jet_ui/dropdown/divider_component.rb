@@ -8,7 +8,7 @@ module JetUi
       end
 
       def call
-        content_tag :li, nil, class: classes, **@options.except(:class)
+        content_tag :li, nil, class: classes, role: 'separator', **@options.except(:class)
       end
 
       private

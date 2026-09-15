@@ -141,6 +141,16 @@ Wrapper for dialog content. Accepts `**options` (HTML attributes).
 | `.dialog__footer`          | Footer area                           |
 | `.dialog__footer-bordered` | Footer with top border                |
 
+## Accessibility
+
+Dialogs are native `<dialog>` elements opened with `showModal()`, so the browser traps focus
+inside the open dialog, makes the rest of the page inert, and closes it on `Escape` (unless
+`dismissible: false`). On top of that the component sets `role="dialog"` and `aria-modal="true"`
+explicitly, and the `dialogs` controller wires up `aria-labelledby` to the dialog's title once it
+is in the DOM — for both inline (`id:`) and async (Turbo-frame) dialogs — giving each dialog an
+accessible name. A dialog with no title, or one where you set your own `aria-label`/
+`aria-labelledby`, is left untouched. The close button carries `aria-label="Close"`.
+
 ## Migrating from Modal/Drawer
 
 `Modal` and `Drawer` are deprecated in favor of `Dialog` and will be removed in the next major

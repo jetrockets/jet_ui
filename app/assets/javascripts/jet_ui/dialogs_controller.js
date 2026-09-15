@@ -24,6 +24,7 @@ export default class DialogsController extends Controller {
 
   #stack = []
   #frameCounter = 0
+  #labelCounter = 0
 
   connect() {
     window.addEventListener("click", this.#interceptTrigger, { capture: true })
@@ -144,6 +145,8 @@ export default class DialogsController extends Controller {
 
     const dialog = document.createElement("dialog")
     dialog.tabIndex = -1
+    dialog.setAttribute("role", "dialog")
+    dialog.setAttribute("aria-modal", "true")
     dialog.className = `dialog dialog-${position} ${horizontal ? "h" : "w"}-${size}`
     dialog.dataset.controller = "dialog"
     dialog.dataset.dialogPositionValue = position
@@ -160,6 +163,10 @@ export default class DialogsController extends Controller {
     delete frame.dataset.pending
     delete frame.dataset.dialogsTarget
     frame.id = `${FRAME_ID}-${++this.#frameCounter}`
+
+    // Remote dialogs open on an empty shell (see #interceptTrigger), so the title only exists
+    // once the frame has loaded — label the shell now that its header is in the DOM.
+    this.#applyLabel(frame.closest("dialog.dialog"))
 
     this.#respawnSentinel()
     this.#portalFlash()
@@ -192,6 +199,7 @@ export default class DialogsController extends Controller {
     this.#renumber()
 
     dialog.addEventListener("close", this.#handleDialogClosed, { once: true })
+    this.#applyLabel(dialog)
     dialog.showModal()
 
     this.#portalFlash()
@@ -218,6 +226,20 @@ export default class DialogsController extends Controller {
 
   #renumber() {
     this.#stack.forEach((dialog, index) => { dialog.dataset.depth = String(index) })
+  }
+
+  // Give the <dialog> an accessible name by pointing aria-labelledby at its title heading.
+  // No-op when the caller already set an explicit aria-label/aria-labelledby, or when the
+  // dialog has no title (e.g. a bare content-only dialog) — better no name than a wrong one.
+  #applyLabel(dialog) {
+    if (!dialog) return
+    if (dialog.hasAttribute("aria-label") || dialog.hasAttribute("aria-labelledby")) return
+
+    const title = dialog.querySelector(".dialog__title")
+    if (!title) return
+
+    if (!title.id) title.id = `dialog-title-${++this.#labelCounter}`
+    dialog.setAttribute("aria-labelledby", title.id)
   }
 
   // --- flash portal --------------------------------------------------------------------------

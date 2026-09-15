@@ -6,18 +6,27 @@ export default class TooltipController extends Controller {
     placement: { type: String, default: "top" }
   }
 
+  static #counter = 0
+
   connect() {
-    this._mouseEnter = this.#mouseEnter.bind(this)
-    this._mouseLeave = this.#mouseLeave.bind(this)
-    this.element.addEventListener("mouseenter", this._mouseEnter)
-    this.element.addEventListener("mouseleave", this._mouseLeave)
+    this._show = this.#show.bind(this)
+    this._hide = this.#hide.bind(this)
+    this._handleKeydown = this.#handleKeydown.bind(this)
+    // Reveal on hover (mouse) and on focus (keyboard) — both are dismissed the same way.
+    this.element.addEventListener("mouseenter", this._show)
+    this.element.addEventListener("mouseleave", this._hide)
+    this.element.addEventListener("focusin", this._show)
+    this.element.addEventListener("focusout", this._hide)
+    this.element.addEventListener("keydown", this._handleKeydown)
   }
 
   disconnect() {
-    this.element.removeEventListener("mouseenter", this._mouseEnter)
-    this.element.removeEventListener("mouseleave", this._mouseLeave)
-    this.tooltip?.remove()
-    this.tooltip = null
+    this.element.removeEventListener("mouseenter", this._show)
+    this.element.removeEventListener("mouseleave", this._hide)
+    this.element.removeEventListener("focusin", this._show)
+    this.element.removeEventListener("focusout", this._hide)
+    this.element.removeEventListener("keydown", this._handleKeydown)
+    this.#hide()
   }
 
   updateContent(event) {
@@ -32,21 +41,31 @@ export default class TooltipController extends Controller {
     }
   }
 
-  #mouseEnter() {
+  #show() {
+    if (this.tooltip) return
     this.#createTooltip()
     this.#updatePosition()
   }
 
-  #mouseLeave() {
-    this.tooltip?.remove()
+  #hide() {
+    if (!this.tooltip) return
+    this.element.removeAttribute("aria-describedby")
+    this.tooltip.remove()
     this.tooltip = null
+  }
+
+  #handleKeydown(event) {
+    if (event.key === "Escape") this.#hide()
   }
 
   #createTooltip() {
     this.tooltip = document.createElement("div")
     this.tooltip.className = "tooltip"
     this.tooltip.role = "tooltip"
+    this.tooltip.id = `tooltip-${++TooltipController.#counter}`
     this.tooltip.innerHTML = this.contentValue
+    // Associate the tooltip with its trigger so screen readers announce it as the description.
+    this.element.setAttribute("aria-describedby", this.tooltip.id)
     const container = this.element.closest("dialog") || document.body
     container.appendChild(this.tooltip)
   }

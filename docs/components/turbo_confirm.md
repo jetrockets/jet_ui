@@ -49,3 +49,9 @@ Turbo.config.forms.confirm = (message, element) => { ... }
 ```
 
 The controller ID `turbo-confirm` is derived from `turbo_confirm_controller.js` by `eagerLoadControllersFrom("jet_ui", application)`.
+
+## Accessibility
+
+The confirmation dialog is a native `<dialog>` opened with `showModal()`, so focus is trapped
+inside it and `Escape` cancels it. It also sets `role="dialog"`, `aria-modal="true"` and
+`aria-labelledby` pointing at its title, giving it an accessible name.

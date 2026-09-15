@@ -53,7 +53,12 @@ module JetUi
       end
 
       def dialog_tag(**options, &block)
-        content_tag :dialog, tabindex: '-1', class: dialog_classes, data: dialog_data(options.delete(:data)),
+        # `role`/`aria-modal` are implied by <dialog>.showModal(), but we set them explicitly so
+        # the accessible role is correct even before the dialog is opened and for assistive tech
+        # that does not infer it. `aria-labelledby` is wired up client-side once the title is in
+        # the DOM — see DialogsController#applyLabel (sync and Turbo-frame dialogs share that path).
+        content_tag :dialog, tabindex: '-1', role: 'dialog', aria: { modal: true },
+                             class: dialog_classes, data: dialog_data(options.delete(:data)),
                              **options, &block
       end
 

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class DropdownController extends Controller {
-  static targets = ["menu", "autofocus"]
+  static targets = ["trigger", "menu", "item", "autofocus"]
   static values = { open: { type: Boolean, default: false } }
 
   connect() {
@@ -22,10 +22,44 @@ export default class DropdownController extends Controller {
 
   toggle() { this.openValue = !this.openValue }
   show()   { this.openValue = true }
-  hide()   { this.openValue = false }
+
+  // `refocus` returns focus to the trigger — used when closing via keyboard (Esc) so the user
+  // is not stranded on a hidden element.
+  hide(refocus = false) {
+    this.openValue = false
+    if (refocus && this.hasTriggerTarget) this.triggerTarget.focus()
+  }
 
   openValueChanged(isOpen) {
+    if (this.hasTriggerTarget) this.triggerTarget.setAttribute("aria-expanded", String(isOpen))
     isOpen ? this.#showMenu() : this.#hideMenu()
+  }
+
+  // Keyboard activation on the trigger. The default trigger is a <span role="button">, which
+  // does not fire a native click on Enter/Space, so we drive it here. preventDefault also stops
+  // native buttons/links from firing their own click, keeping the toggle from double-firing.
+  triggerKeydown(event) {
+    switch (event.key) {
+      case "Enter":
+      case " ":
+        event.preventDefault()
+        this.toggle()
+        if (this.openValue) this.#focusItem(0)
+        break
+      case "ArrowDown":
+        event.preventDefault()
+        this.show()
+        this.#focusItem(0)
+        break
+      case "ArrowUp":
+        event.preventDefault()
+        this.show()
+        this.#focusItem(-1)
+        break
+      case "Escape":
+        if (this.openValue) { event.preventDefault(); this.hide(true) }
+        break
+    }
   }
 
   #handleClick(event) {
@@ -50,8 +84,45 @@ export default class DropdownController extends Controller {
     document.removeEventListener("keydown", this._handleKeydown)
   }
 
+  // Roving keyboard navigation while the menu is open (WAI-ARIA menu button pattern).
   #handleKeydown(event) {
-    if (event.key === "Escape") this.hide()
+    switch (event.key) {
+      case "Escape":
+        event.preventDefault()
+        this.hide(true)
+        break
+      case "ArrowDown":
+        event.preventDefault()
+        this.#focusItem(this.#currentItemIndex() + 1)
+        break
+      case "ArrowUp":
+        event.preventDefault()
+        this.#focusItem(this.#currentItemIndex() - 1)
+        break
+      case "Home":
+        event.preventDefault()
+        this.#focusItem(0)
+        break
+      case "End":
+        event.preventDefault()
+        this.#focusItem(-1)
+        break
+      case "Tab":
+        this.hide()
+        break
+    }
+  }
+
+  #currentItemIndex() {
+    return this.itemTargets.indexOf(document.activeElement)
+  }
+
+  // Focus the item at `index`, wrapping around both ends (index -1 focuses the last item).
+  #focusItem(index) {
+    const items = this.itemTargets
+    if (items.length === 0) return
+    const count = items.length
+    items[((index % count) + count) % count].focus()
   }
 
   #clickOutside(event) {

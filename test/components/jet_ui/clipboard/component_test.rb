@@ -37,7 +37,21 @@ class JetUi::Clipboard::ComponentTest < ViewComponent::TestCase
   def test_has_copy_action
     render_inline(JetUi::Clipboard::Component.new(value: 'text')) { 'Copy' }
 
-    assert_selector '[data-action="click->clipboard#copy"]'
+    assert_selector '[data-action~="click->clipboard#copy"]'
+  end
+
+  def test_span_variant_is_a_keyboard_accessible_button
+    render_inline(JetUi::Clipboard::Component.new(value: 'text')) { 'Copy' }
+
+    assert_selector 'span[role="button"][tabindex="0"]'
+    assert_selector 'span[aria-label="Copy to clipboard"]'
+    assert_selector '[data-action~="keydown->clipboard#copyOnKeydown"]'
+  end
+
+  def test_custom_aria_label
+    render_inline(JetUi::Clipboard::Component.new(value: 'text', aria_label: 'Copy token')) { 'Copy' }
+
+    assert_selector 'span[aria-label="Copy token"]'
   end
 
   def test_adds_tooltip_controller_when_tooltip_given
