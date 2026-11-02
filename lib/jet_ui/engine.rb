@@ -6,8 +6,14 @@ module JetUi
 
     initializer 'jet_ui.view_component' do |app|
       if app.config.respond_to?(:view_component)
-        app.config.view_component.preview_paths ||= []
-        app.config.view_component.preview_paths << root.join('test/components/previews').to_s
+        previews = root.join('test/components/previews').to_s
+
+        if ViewComponent::VERSION::MAJOR >= 4
+          app.config.view_component.previews.paths << previews
+        else
+          app.config.view_component.preview_paths ||= []
+          app.config.view_component.preview_paths << previews
+        end
       end
     end
 
