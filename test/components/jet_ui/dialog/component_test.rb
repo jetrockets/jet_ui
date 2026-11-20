@@ -17,6 +17,29 @@ class JetUi::Dialog::ComponentTest < ViewComponent::TestCase
     assert_no_selector 'dialog'
   end
 
+  def test_async_open_renders_into_the_sentinel_frame
+    vc_test_request.headers['Turbo-Frame'] = 'dialog'
+    render_inline(JetUi::Dialog::Component.new(title: 'Edit'))
+
+    assert_selector 'turbo-frame#dialog'
+  end
+
+  def test_async_rerender_answers_the_frame_the_open_dialog_holds
+    vc_test_request.headers['Turbo-Frame'] = 'dialog-3'
+    render_inline(JetUi::Dialog::Component.new(title: 'Edit'))
+
+    assert_selector 'turbo-frame#dialog-3'
+    assert_no_selector 'turbo-frame#dialog'
+  end
+
+  def test_async_open_from_an_unrelated_frame_still_renders_the_dialog_frame
+    vc_test_request.headers['Turbo-Frame'] = 'comments'
+    render_inline(JetUi::Dialog::Component.new(title: 'Edit'))
+
+    assert_selector 'turbo-frame#dialog'
+    assert_no_selector 'turbo-frame#comments'
+  end
+
   def test_default_position_is_center
     render_inline(JetUi::Dialog::Component.new(id: 'my-dialog'))
 

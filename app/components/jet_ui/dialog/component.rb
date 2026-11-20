@@ -11,6 +11,9 @@ module JetUi
 
       EDGE_POSITIONS = %i[left right top bottom].freeze
 
+      FRAME_ID = 'dialog'
+      FRAME_PATTERN = /\A#{FRAME_ID}(-\d+)?\z/
+
       def initialize(title: nil, subtitle: nil, position: DEFAULT_POSITION, size: DEFAULT_SIZE,
                      id: nil, closable: true, dismissible: true, swipe: true)
         @title       = title
@@ -46,10 +49,15 @@ module JetUi
         # Async open (e.g. opened via a link with data: { turbo_frame: :dialog }).
         # The <dialog> shell around this frame is created client-side by DialogsController
         # before Turbo navigates the frame — see app/assets/javascripts/jet_ui/dialogs_controller.js.
-        return helpers.turbo_frame_tag(:dialog, &block) if helpers.turbo_frame_request?
+        return helpers.turbo_frame_tag(frame_id, &block) if helpers.turbo_frame_request?
 
         # Not a Turbo Frame request (direct visit, new tab) — render as a plain page section.
         content_tag :div, class: class_names('dialog-page', size_class), &block
+      end
+
+      def frame_id
+        requested = helpers.turbo_frame_request_id
+        requested.to_s.match?(FRAME_PATTERN) ? requested : FRAME_ID
       end
 
       def dialog_tag(**options, &block)
