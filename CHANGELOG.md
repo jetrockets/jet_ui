@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Development Ruby version (`.ruby-version`) 4.0.6 → 4.0.10
 
+### Fixed
+- Engine boot with ViewComponent 4.21+: register previews through `previews.paths` instead of the renamed `preview_paths` (ViewComponent 3 keeps using `preview_paths`)
+
 ## [0.3.0] - 2026-09-11
 
 ### Added
