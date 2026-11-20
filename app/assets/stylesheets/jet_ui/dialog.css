@@ -1,5 +1,7 @@
 @layer theme, base, components, utilities;
 
+@source inline("w-{sm,md,lg,xl,2xl,3xl,4xl,5xl,6xl}");
+
 @layer components {
   /*
    * .dialog is a pure, invisible positioning shell: fixed, sized, anchored to an edge (or
