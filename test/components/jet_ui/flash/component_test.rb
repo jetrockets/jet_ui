@@ -90,6 +90,30 @@ class JetUi::Flash::ComponentTest < ViewComponent::TestCase
     assert_selector 'div.flash-item', count: 1
   end
 
+  def test_frame_is_polite_live_region
+    render_inline(JetUi::Flash::Component.new(messages: { notice: 'Hi' }))
+
+    assert_selector 'turbo-frame#flash[role="status"][aria-live="polite"][aria-atomic="false"]'
+  end
+
+  def test_live_region_renders_without_messages
+    render_inline(JetUi::Flash::Component.new(messages: {}))
+
+    assert_selector 'turbo-frame#flash[role="status"][aria-live="polite"][aria-atomic="false"]'
+  end
+
+  def test_live_region_uses_custom_frame_id
+    render_inline(JetUi::Flash::Component.new(messages: {}, frame_id: :demo))
+
+    assert_selector 'turbo-frame#demo[role="status"]'
+  end
+
+  def test_not_dismissible_sets_show_delay
+    render_inline(JetUi::Flash::Component.new(messages: { notice: 'Hi' }, dismissible: false))
+
+    assert_selector 'div[data-flash-show-delay-value="250"]'
+  end
+
   def test_item_id_includes_flash_type
     render_inline(JetUi::Flash::Component.new(messages: { notice: 'Hi' }))
 
