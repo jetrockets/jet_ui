@@ -211,7 +211,10 @@ export default class DialogsController extends Controller {
 
     dialog.dispatchEvent(new CustomEvent("jet-ui:dialog:closed", { bubbles: true }))
 
-    if (dialog.dataset.remote === "true") dialog.remove()
+    if (dialog.dataset.remote === "true") {
+      this.#releaseFlash(dialog)
+      dialog.remove()
+    }
 
     this.#portalFlash()
   }
@@ -224,6 +227,11 @@ export default class DialogsController extends Controller {
   // The topmost open dialog is promoted to the browser's top layer, which makes everything
   // outside it inert — a flash frame left in <body> would be invisible and unclickable.
   // We move #flash into the topmost dialog's .dialog__flash-slot instead (see dialog.css).
+
+  #releaseFlash(dialog) {
+    const flashFrame = document.getElementById("flash")
+    if (flashFrame && dialog.contains(flashFrame)) document.body.append(flashFrame)
+  }
 
   #portalFlash = () => {
     const flashFrame = document.getElementById("flash")
