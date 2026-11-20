@@ -6,8 +6,16 @@ module JetUi
 
     initializer 'jet_ui.view_component' do |app|
       if app.config.respond_to?(:view_component)
-        app.config.view_component.preview_paths ||= []
-        app.config.view_component.preview_paths << root.join('test/components/previews').to_s
+        previews_path = root.join('test/components/previews').to_s
+        config = app.config.view_component
+
+        # ViewComponent 4 moved `preview_paths` to `previews.paths` and raises on the old name.
+        if config.previews
+          config.previews.paths << previews_path
+        else
+          config.preview_paths ||= []
+          config.preview_paths << previews_path
+        end
       end
     end
 
