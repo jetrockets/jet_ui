@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Engine boot with ViewComponent 4.21+: register previews through `previews.paths` instead of the renamed `preview_paths` (ViewComponent 3 keeps using `preview_paths`)
+- `Flash` is announced by screen readers: the Turbo frame is now a polite live region (`role="status"`), and non-dismissible messages get the same 250 ms show delay as dismissible ones
 
 ## [0.3.0] - 2026-09-11
 

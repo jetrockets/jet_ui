@@ -49,6 +49,18 @@ flash[:warning] = "Session will expire soon."
 
 Messages render without a close button and do not auto-dismiss.
 
+## Accessibility
+
+The Turbo frame is a polite live region (`role="status"`, `aria-live="polite"`, `aria-atomic="false"`), so screen readers announce each message as it is added. The region has to exist before a message arrives: keep the component in your layout on every page, even when there are no messages.
+
+To show a message from a Turbo Stream, replace the frame with the component:
+
+```erb
+<%= turbo_stream.replace :flash, jet_ui.flash(messages: flash) %>
+```
+
+Do not wrap the component in `turbo_stream.update :flash`: that nests a second `turbo-frame#flash` inside the first.
+
 ## CSS classes
 
 | Class | Description |
@@ -73,4 +85,4 @@ Values used by the controller:
 | Value | Type | Default | Description |
 |-------|------|---------|-------------|
 | `dismissAfter` | Number | — | Ms before auto-dismiss. Only set when `dismissible: true`. |
-| `showDelay` | Number | `250` | Ms delay before the enter animation starts. |
+| `showDelay` | Number | `250` | Ms delay before the enter animation starts. Always set, also when `dismissible: false`. |

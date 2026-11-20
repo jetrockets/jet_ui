@@ -1,4 +1,4 @@
-<%= helpers.turbo_frame_tag @frame_id, class: 'flash-container', target: :_top, refresh: :morph do %>
+<%= helpers.turbo_frame_tag @frame_id, class: 'flash-container', target: :_top, refresh: :morph, role: 'status', aria: { live: 'polite', atomic: false } do %>
   <% flash_messages.each do |key, message| %>
     <% next if message.blank? %>
 
